@@ -20,6 +20,9 @@ import { seed } from "./lib/seed";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
+const onVercel = process.env.VERCEL === "1";
+const databaseUri =
+  process.env.DATABASE_URI || (onVercel ? "file:/tmp/payload.sqlite" : "file:./payload.sqlite");
 
 export default buildConfig({
   admin: {
@@ -47,13 +50,14 @@ export default buildConfig({
   },
   db: sqliteAdapter({
     client: {
-      url: process.env.DATABASE_URI || "file:./payload.sqlite",
+      url: databaseUri,
     },
     busyTimeout: 8000,
-    push: true,
+    push: !onVercel,
   }),
   sharp,
   async onInit(payload) {
+    if (onVercel) return;
     try {
       await seed(payload);
     } catch (error) {
