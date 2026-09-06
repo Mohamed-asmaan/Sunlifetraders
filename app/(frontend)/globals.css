@@ -1,0 +1,284 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #111111;
+  --muted: rgba(17, 17, 17, 0.7);
+  --line: #ececec;
+  --soft: #f2f2f2;
+  /* Brand amber — the warm orange from the sun in the logo */
+  --amber: #f97316;
+  --amber-light: #fff4ec;
+  /* Legacy aliases → amber */
+  --lime: #f97316;
+  --sun: #f97316;
+  --leaf: #1a7a4a;
+  --ink: #111111;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-soft: var(--soft);
+  --color-amber: var(--amber);
+  --color-amber-light: var(--amber-light);
+  --color-lime: var(--lime);
+  --color-sun: var(--sun);
+  --color-leaf: var(--leaf);
+  --color-ink: var(--ink);
+  --font-sans: var(--font-instrument);
+  --font-display: var(--font-host);
+  --font-geist: var(--font-geist);
+}
+
+html {
+  scroll-behavior: auto;
+  overflow-x: clip;
+}
+
+body {
+  background: var(--background);
+  color: var(--ink);
+  font-family: var(--font-instrument), sans-serif;
+  font-feature-settings: "blwf", "cv03", "cv04", "cv09", "cv11";
+  letter-spacing: -0.01em;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--amber);
+  color: #ffffff;
+}
+
+.display-hero {
+  font-family: var(--font-host), sans-serif;
+  font-weight: 500;
+  font-size: 38px;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  font-feature-settings: "blwf", "cv03", "cv04", "cv09", "cv11";
+}
+
+.display-hero span {
+  font-weight: 500;
+}
+
+.display {
+  font-family: var(--font-host), sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+  font-feature-settings: "blwf", "cv03", "cv04", "cv09", "cv11";
+}
+
+.display span {
+  font-weight: 400;
+}
+
+.display-card {
+  font-family: var(--font-host), sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-feature-settings: "blwf", "cv03", "cv04", "cv09", "cv11";
+}
+
+.display-kicker {
+  font-family: var(--font-host), sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-feature-settings: "blwf", "cv03", "cv04", "cv09", "cv11";
+}
+
+.copy {
+  font-family: var(--font-instrument), sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.ui {
+  font-family: var(--font-geist), sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  line-height: 16.8px;
+}
+
+.eyebrow {
+  font-family: var(--font-geist), sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  line-height: 16.8px;
+  color: var(--ink);
+}
+
+@media (min-width: 810px) {
+  .display-hero {
+    font-size: 56px;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .display {
+    font-size: 34px;
+  }
+
+  .display-card {
+    font-size: 24px;
+  }
+
+  .display-kicker {
+    font-size: 19px;
+  }
+
+  .copy {
+    font-size: 15px;
+  }
+
+  .ui {
+    font-size: 15px;
+    line-height: 1.2;
+  }
+}
+
+@media (min-width: 1200px) {
+  .display-hero {
+    font-size: 64px;
+  }
+
+  .display {
+    font-size: 40px;
+  }
+
+  .display-card {
+    font-size: 26px;
+  }
+
+  .ui {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+}
+
+@keyframes hero-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.hero-progress {
+  transform-origin: left center;
+  animation: hero-progress 5.5s linear forwards;
+}
+
+.hero-bottom-blur {
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 72px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  mask-image: linear-gradient(to bottom, transparent, #000 60%, #000);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 60%, #000);
+}
+
+.hero-bottom-fade {
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 96px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.35) 45%, #fff 100%);
+}
+
+@media (min-width: 810px) {
+  .hero-bottom-blur {
+    height: 96px;
+  }
+
+  .hero-bottom-fade {
+    height: 120px;
+  }
+}
+
+@keyframes logo-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.logo-marquee {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.logo-marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 3.5rem;
+  animation: logo-marquee 32s linear infinite;
+  will-change: transform;
+}
+
+.logo-marquee:hover .logo-marquee-track {
+  animation-play-state: paused;
+}
+
+.logo-marquee-item {
+  display: flex;
+  height: 36px;
+  flex: none;
+  align-items: center;
+}
+
+.logo-marquee-item img {
+  height: 36px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+}
+
+@media (max-width: 640px) {
+  .logo-marquee-track {
+    gap: 2.25rem;
+  }
+
+  .logo-marquee-item {
+    height: 28px;
+  }
+
+  .logo-marquee-item img {
+    height: 28px;
+    max-width: 120px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee-track {
+    animation: none;
+  }
+}
+
+.roi-range {
+  accent-color: var(--amber);
+}
