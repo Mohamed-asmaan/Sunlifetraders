@@ -96,7 +96,7 @@ export default function Benefits({
       />
 
       <div className="mt-10 overflow-hidden rounded-[32px] bg-soft lg:grid lg:grid-cols-2 lg:items-stretch">
-        <div className="flex flex-col justify-center gap-2.5 p-4 sm:p-6 lg:p-8">
+        <div className="flex flex-col justify-center gap-2.5 p-3 sm:p-3 lg:p-3">
           {items.map((item, i) => {
             const active = open === i;
             return (
@@ -131,7 +131,7 @@ export default function Benefits({
                     ) : null}
                   </AnimatePresence>
                 </span>
-                <span className="grid h-8 w-8 shrink-0 place-items-center text-ink">
+                <span className="grid h-11 w-11 shrink-0 place-items-center text-ink">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
                     <path
                       d={active ? "M7 17L17 7M17 7H8M17 7V16" : "M5 12h14M14 7l5 5-5 5"}

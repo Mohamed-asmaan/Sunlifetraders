@@ -23,7 +23,7 @@ export default function ContactForm({ propertyTypes }: { propertyTypes: string[]
 
   return (
     <form onSubmit={onSubmit} className="rounded-[28px] border border-line bg-white p-5 md:p-7">
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2">
         <label className="block text-sm">
           <span className="mb-2 block font-medium">Name</span>
           <input required name="name" className={fieldClass} />

@@ -89,7 +89,7 @@ export default function Locations({ intro, offices }: { intro: Intro; offices: O
                   <span className={`h-2 w-2 shrink-0 rounded-full ${on ? "bg-amber" : "bg-white"}`} />
                   {office.city.split(",")[0]}
                 </h3>
-                <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr]">
+                <div className="grid grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [@media(hover:hover)]:grid-rows-[0fr] [@media(hover:hover)]:group-hover:grid-rows-[1fr] [@media(hover:hover)]:group-focus-within:grid-rows-[1fr]">
                   <p className="overflow-hidden">
                     <span className="copy mt-2 block text-white/75">{office.address}</span>
                   </p>

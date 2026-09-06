@@ -7,7 +7,7 @@ export function MobileStickyBar({ phoneHref }: { phoneHref: string }) {
 
   return (
     <nav
-      className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-white/95 p-2 backdrop-blur-md lg:hidden"
+      className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-white/95 px-2 pt-2 pb-[calc(8px+env(safe-area-inset-bottom))] backdrop-blur-md lg:hidden"
       aria-label="Quick actions"
     >
       <div className="grid grid-cols-2 gap-2">

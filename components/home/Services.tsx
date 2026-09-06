@@ -72,7 +72,7 @@ export default function Services({
         title={intro.title}
         description={intro.description}
         align="center"
-        className="mx-auto w-[60%] text-center"
+        className="mx-auto w-full max-w-[640px] text-center"
         descriptionClass="copy mt-5 text-muted"
       />
 

@@ -55,21 +55,20 @@ export default function Projects({ intro, items }: { intro: Intro; items: Projec
               <div className="absolute inset-x-3 bottom-3 md:inset-x-4 md:bottom-4">
                 <div className="rounded-2xl bg-white p-4 shadow-[0_8px_24px_rgba(17,17,17,0.08)] md:p-5">
                   <div className="flex items-start justify-between gap-3">
-                    <h3 className="display-card text-[20px] min-[810px]:text-[22px]">
-                      {lead}
+                    <div className="min-w-0 flex-1">
+                      <h3 className="display-card text-[18px] min-[810px]:text-[22px]">{lead}</h3>
                       {hook ? (
-                        <>
-                          {" · "}
-                          <span className="rounded-full bg-amber px-2 py-0.5 text-white">{hook}</span>
-                        </>
+                        <span className="mt-1 inline-block rounded-full bg-amber px-2 py-0.5 text-[11px] font-medium text-white">
+                          {hook}
+                        </span>
                       ) : null}
-                    </h3>
+                    </div>
                     <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-amber" aria-hidden />
                   </div>
 
-                  <div className="grid grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [@media(hover:hover)]:grid-rows-[0fr] [@media(hover:hover)]:group-hover:grid-rows-[1fr] [@media(hover:hover)]:group-focus-within:grid-rows-[1fr]">
+                  <div className="mt-3 grid grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [@media(hover:hover)]:grid-rows-[0fr] [@media(hover:hover)]:group-hover:grid-rows-[1fr] [@media(hover:hover)]:group-focus-within:grid-rows-[1fr]">
                     <div className="overflow-hidden">
-                      <p className="copy mt-3 text-muted">{quote}</p>
+                      <p className="copy text-muted">{quote}</p>
                       {who ? <p className="eyebrow mt-2 text-ink/50">{who}</p> : null}
                     </div>
                   </div>

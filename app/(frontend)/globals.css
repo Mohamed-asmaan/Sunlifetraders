@@ -45,6 +45,8 @@ body {
   font-feature-settings: "blwf", "cv03", "cv04", "cv09", "cv11";
   letter-spacing: -0.01em;
   overflow-x: clip;
+  /* safe-area for notched/home-bar phones */
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 ::selection {
@@ -55,7 +57,7 @@ body {
 .display-hero {
   font-family: var(--font-host), sans-serif;
   font-weight: 500;
-  font-size: 38px;
+  font-size: clamp(28px, 9vw, 38px);
   letter-spacing: -0.04em;
   line-height: 1.05;
   font-feature-settings: "blwf", "cv03", "cv04", "cv09", "cv11";

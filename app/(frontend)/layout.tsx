@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Host_Grotesk, Instrument_Sans } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -28,6 +28,13 @@ const geist = Geist({
 
 export const dynamic = "force-dynamic";
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#ffffff",
+};
+
 export const metadata: Metadata = {
   title: seo.title,
   description: seo.description,
@@ -46,7 +53,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       lang="en"
       className={`${instrument.variable} ${host.variable} ${geist.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-white pb-[72px] text-ink lg:pb-0" suppressHydrationWarning>
+      <body className="min-h-full bg-white pb-[calc(72px+env(safe-area-inset-bottom))] text-ink lg:pb-0" suppressHydrationWarning>
         <SmoothScroll>
           <RoiOverlayProvider>
             <Header navLinks={site.navLinks} cta={site.headerCta} />

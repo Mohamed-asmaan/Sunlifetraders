@@ -60,7 +60,7 @@ export function SectionIntro({
   children?: ReactNode;
 }) {
   const frame =
-    className ?? (align === "center" ? "mx-auto w-[80%] text-center" : "max-w-[720px]");
+    className ?? (align === "center" ? "mx-auto w-full max-w-[700px] text-center" : "max-w-[720px]");
 
   return (
     <div className={frame}>

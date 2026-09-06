@@ -73,7 +73,7 @@ function StepStack({ steps }: { steps: Step[] }) {
     <div ref={stackRef} className="mt-10">
       <div className="sticky top-[76px] z-30 -mx-4 bg-white/90 px-4 py-3 backdrop-blur-md md:-mx-6 md:px-6">
         <p className="eyebrow text-ink/45">Pipeline · step {steps[active]?.number} of {String(steps.length).padStart(2, "0")}</p>
-        <div className="mt-3 flex items-center gap-1 overflow-x-auto pb-1">
+        <div className="mt-3 flex items-center gap-1 overflow-x-auto pb-1 [scrollbar-width:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden">
           {steps.map((step, i) => (
             <div key={step.number} className="flex items-center">
               <button

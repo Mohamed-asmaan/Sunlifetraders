@@ -44,7 +44,7 @@ export default function RoiCalculator({ onLockQuote }: { onLockQuote?: () => voi
           </div>
 
           <p className="mt-6 text-sm font-medium">State</p>
-          <div className="mt-2 grid grid-cols-2 gap-2">
+          <div className="mt-2 grid grid-cols-2 gap-2 xs:grid-cols-2 sm:grid-cols-3">
             {(Object.keys(ROI_STATES) as RoiState[]).map((key) => (
               <button
                 key={key}

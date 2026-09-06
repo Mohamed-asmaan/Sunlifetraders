@@ -63,14 +63,14 @@ export default function Footer({
       </div>
 
       <div className="bg-[#f7f7f7]">
-        <div className="mx-auto max-w-[1280px] px-4 py-16 md:px-6 md:py-20">
-          <div className="grid gap-14 md:grid-cols-2">
+        <div className="mx-auto max-w-[1280px] px-4 py-14 md:px-6 md:py-20">
+          <div className="grid gap-10 sm:grid-cols-2 md:gap-14">
             <div>
               <Logo />
               <p className="copy mt-5 max-w-[42ch] text-ink/70">{company.tagline}</p>
             </div>
 
-            <div className="grid grid-cols-2 gap-10">
+            <div className="grid grid-cols-2 gap-6 sm:gap-10">
               <div className="flex flex-col gap-3">
                 {links.map((link) => (
                   <Link key={link.href} href={link.href} className="ui text-ink hover:text-ink/50">
@@ -79,7 +79,7 @@ export default function Footer({
                 ))}
               </div>
               <div className="flex flex-col gap-3 text-sm">
-                <p className="max-w-[26ch] leading-relaxed text-ink/80">{company.address}</p>
+                <p className="leading-relaxed text-ink/80">{company.address}</p>
                 <a href={`mailto:${company.email}`} className="ui underline decoration-ink/25 underline-offset-4 hover:text-ink/50">
                   {company.email}
                 </a>
@@ -104,7 +104,7 @@ export default function Footer({
             </div>
           </div>
 
-          <p className="mt-16 border-t border-ink/10 pt-6 text-sm text-ink/40">
+          <p className="mt-12 border-t border-ink/10 pt-6 text-sm text-ink/40">
             © {new Date().getFullYear()} {company.name}. All rights reserved.
           </p>
         </div>

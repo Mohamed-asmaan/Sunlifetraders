@@ -77,7 +77,7 @@ export default function Header({
           </ArrowButton>
           <button
             type="button"
-            className="grid h-10 w-10 place-items-center rounded-xl border border-black/10 bg-white/70 lg:hidden"
+            className="grid h-11 w-11 place-items-center rounded-xl border border-black/10 bg-white/70 lg:hidden"
             aria-label="Toggle menu"
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}

@@ -179,15 +179,17 @@ export default function Hero({ hero }: { hero: HeroContent }) {
                   key={item.title}
                   type="button"
                   aria-label={item.badge}
-                  className="h-[3px] flex-1 overflow-hidden rounded-full bg-black/15"
+                  className="relative flex-1 py-2"
                   onClick={() => setIndex(i)}
                 >
-                  <span
-                    key={i === index ? `active-${index}` : `idle-${i}`}
-                    className={`block h-full origin-left rounded-full bg-ink ${
-                      i === index ? "hero-progress" : "scale-x-0"
-                    }`}
-                  />
+                  <span className="block h-[3px] w-full overflow-hidden rounded-full bg-black/15">
+                    <span
+                      key={i === index ? `active-${index}` : `idle-${i}`}
+                      className={`block h-full origin-left rounded-full bg-ink ${
+                        i === index ? "hero-progress" : "scale-x-0"
+                      }`}
+                    />
+                  </span>
                 </button>
               ))}
             </div>
