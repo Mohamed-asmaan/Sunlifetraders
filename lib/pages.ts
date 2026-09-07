@@ -42,7 +42,7 @@ export const pages: CmsPage[] = [
   },
   {
     slug: "services",
-    badge: "Services",
+    badge: "",
     title: "Explore SUNLIFE TRADERS' Services",
     description:
       "Discover a range of services designed to empower your transition towards a more sustainable future.",

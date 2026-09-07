@@ -46,7 +46,7 @@ export function SectionIntro({
   light = false,
   children,
 }: {
-  badge: string;
+  badge?: string;
   title: string;
   description?: string;
   as?: "h1" | "h2";
@@ -59,14 +59,16 @@ export function SectionIntro({
   light?: boolean;
   children?: ReactNode;
 }) {
-  const frame =
-    className ?? (align === "center" ? "mx-auto w-full max-w-[700px] text-center" : "max-w-[720px]");
+  const frame = 
+  className ?? (align === "center" ? "mx-auto w-full max-w-[700px] text-center" : "max-w-[720px]");
+  const showBadge = Boolean(badge?.trim());
 
   return (
     <div className={frame}>
-      <Reveal className={align === "center" ? "flex justify-center" : undefined}>
+      {showBadge? (      <Reveal className={align === "center" ? "flex justify-center" : undefined}>
         <Badge light={light}>{badge}</Badge>
-      </Reveal>
+      </Reveal>) : null}
+
       <BlurWords as={as} text={title} className={titleClass} inView={inView} />
       {description ? (
         <Reveal delay={delay}>

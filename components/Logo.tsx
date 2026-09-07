@@ -27,7 +27,7 @@ export default function Logo({
           fontFeatureSettings: '"blwf", "cv03", "cv04", "cv09", "cv11"',
         }}
       >
-        Sun<span style={{ color: "var(--amber)" }}>life</span>
+        Sunlife Traders<span style={{ color: "var(--amber)" }}>{" "}LLP</span>
       </span>
     </Link>
   );

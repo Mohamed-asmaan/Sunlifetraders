@@ -22,15 +22,17 @@ export default function ArrowButton({
   children,
   variant = "dark",
   className = "",
+  display = "inline-flex justify-between",
 }: {
   href?: string;
   onClick?: () => void;
   children: React.ReactNode;
   variant?: "dark" | "light";
+  display?: string;
   className?: string;
 }) {
   const dark = variant === "dark";
-  const classes = `group ui inline-flex items-center gap-3 rounded-xl py-[9px] pr-[6px] pl-[16px] transition-[background-color,color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03] ${
+  const classes = `group ui ${display} items-center gap-3 rounded-xl py-[9px] pr-[6px] pl-[16px] transition-[background-color,color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03] ${
     dark
       ? "bg-ink text-white hover:bg-white hover:text-ink hover:shadow-[0_8px_24px_rgba(17,17,17,0.12)]"
       : "bg-white text-ink hover:bg-ink hover:text-white"

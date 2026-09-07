@@ -35,6 +35,7 @@ function WordLine({
 function SlideCopy({ slide, animated }: { slide: HeroSlide; animated: boolean }) {
   const titleClass = "display-hero mx-auto mt-3 w-full max-w-[16ch] text-center text-ink min-[810px]:mt-5";
   const bodyClass = "copy mx-auto mt-2.5 w-full max-w-[46ch] text-center text-ink min-[810px]:mt-4";
+  const buttonClass = "w-[75%] min-[810px]:w-auto";
 
   return (
     <div className="flex w-full flex-col items-center text-center">
@@ -96,18 +97,18 @@ function SlideCopy({ slide, animated }: { slide: HeroSlide; animated: boolean })
           animate="show"
           transition={{ duration: 0.8, delay: 1.05, ease: easeOutExpo }}
         >
-          <ArrowButton onClick={openRoi}>{slide.cta}</ArrowButton>
+          <ArrowButton onClick={openRoi} className={buttonClass}>{slide.cta}</ArrowButton>
           {slide.secondaryCta && slide.secondaryHref ? (
-            <ArrowButton href={slide.secondaryHref} variant="light">
+            <ArrowButton href={slide.secondaryHref} variant="light" className={buttonClass}>
               {slide.secondaryCta}
             </ArrowButton>
           ) : null}
         </motion.div>
       ) : (
         <div className="mt-4 flex flex-wrap items-center justify-center gap-3 min-[810px]:mt-6">
-          <ArrowButton onClick={openRoi}>{slide.cta}</ArrowButton>
+          <ArrowButton onClick={openRoi} className={buttonClass}>{slide.cta}</ArrowButton>
           {slide.secondaryCta && slide.secondaryHref ? (
-            <ArrowButton href={slide.secondaryHref} variant="light">
+            <ArrowButton href={slide.secondaryHref} variant="light" className={buttonClass}>
               {slide.secondaryCta}
             </ArrowButton>
           ) : null}

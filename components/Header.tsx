@@ -72,7 +72,7 @@ export default function Header({
         </nav>
 
         <div className="flex items-center gap-2">
-          <ArrowButton href={cta.href} className="hidden sm:inline-flex">
+          <ArrowButton href={cta.href} display="hidden" className="sm:inline-flex">
             {cta.label}
           </ArrowButton>
           <button
