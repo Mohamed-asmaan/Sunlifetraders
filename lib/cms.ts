@@ -47,6 +47,12 @@ function imageAt<T extends { image: string }>(fallback: T[], i: number) {
   return (fallback[i] ?? fallback[0]).image;
 }
 
+function productImage(docImage: string | null | undefined, slug: string, i: number) {
+  const match = home.products.find((item) => item.slug === slug) ?? home.products[i];
+  if (docImage?.startsWith("/images/products/")) return docImage;
+  return match?.image || docImage || imageAt(home.products, i);
+}
+
 function cards(
   items:
     | {
@@ -103,7 +109,11 @@ export const getSite = cache(async (): Promise<SiteContent> => {
           site.company.offices,
         ),
       },
-      navLinks: many(doc.navLinks, (link) => ({ href: link.href, label: link.label }), site.navLinks),
+      navLinks: (() => {
+        const links = many(doc.navLinks, (link) => ({ href: link.href, label: link.label }), site.navLinks);
+        const hrefs = new Set(links.map((link) => link.href));
+        return [...links, ...site.navLinks.filter((link) => !hrefs.has(link.href))];
+      })(),
       footerLinks: many(
         doc.footerLinks,
         (link) => ({ href: link.href, label: link.label }),
@@ -211,7 +221,7 @@ export const getHomePage = cache(async (): Promise<HomeContent> => {
           description: doc.description,
           spec: doc.spec || undefined,
           category: (doc.category || home.products[i]?.category || "pv") as HomeContent["products"][number]["category"],
-          image: doc.image || imageAt(home.products, i),
+          image: productImage(doc.image, (doc as { slug?: string }).slug || home.products[i]?.slug || String(i), i),
           alt: doc.alt || "",
           cta: doc.cta || "Get a quote",
         }),
@@ -361,7 +371,7 @@ export const getProducts = cache(async (): Promise<HomeContent["products"]> => {
       description: doc.description,
       spec: doc.spec || undefined,
       category: (doc.category || home.products[i]?.category || "pv") as HomeContent["products"][number]["category"],
-      image: doc.image || imageAt(home.products, i),
+      image: productImage(doc.image, (doc as { slug?: string }).slug || home.products[i]?.slug || String(i), i),
       alt: doc.alt || "",
       cta: doc.cta || "Get a quote",
     }));
@@ -388,7 +398,7 @@ export const getProduct = cache(async (slug: string): Promise<HomeContent["produ
       description: doc.description,
       spec: doc.spec || undefined,
       category: (doc.category || fallback?.category || "pv") as HomeContent["products"][number]["category"],
-      image: doc.image || fallback?.image || imageAt(home.products, Math.max(i, 0)),
+      image: productImage(doc.image, slug, Math.max(i, 0)),
       alt: doc.alt || "",
       cta: doc.cta || "Get a quote",
     };

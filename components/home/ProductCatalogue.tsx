@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Section, SectionIntro } from "@/components/ui/Section";
 import { MotionCard } from "@/components/motion/Reveal";
@@ -50,8 +51,18 @@ export default function ProductCatalogue({ intro, items }: { intro: Intro; items
             i={i}
             hover={-6}
             amount={0.2}
-            className="flex h-full flex-col rounded-2xl border border-line bg-white p-6"
+            className="flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white"
           >
+            <div className="relative aspect-[4/3] w-full bg-soft">
+              <Image
+                src={item.image}
+                alt={item.alt || item.title}
+                fill
+                className="object-contain"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              />
+            </div>
+            <div className="flex flex-1 flex-col p-6">
             <p className="eyebrow text-ink/45">{categoryLabel[item.category]}</p>
             <h3 className="display-card mt-3">{item.title}</h3>
             {item.spec ? <p className="ui mt-2 text-ink/55">{item.spec}</p> : null}
@@ -65,6 +76,7 @@ export default function ProductCatalogue({ intro, items }: { intro: Intro; items
                 <path d="M3 6h6M6.5 3.5 9 6 6.5 8.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
+            </div>
           </MotionCard>
         ))}
       </div>

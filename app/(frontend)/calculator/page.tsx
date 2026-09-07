@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import RoiCalculator from "@/components/roi/RoiCalculator";
-import ArrowButton from "@/components/ArrowButton";
+import SurveyCta from "@/components/SurveyCta";
 import { Section, SectionIntro } from "@/components/ui/Section";
 import { Reveal } from "@/components/motion/Reveal";
-import { seo, site } from "@/lib/data";
+import { seo } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: `Solar Savings Calculator | ${seo.title}`,
@@ -88,26 +88,8 @@ export default function CalculatorPage() {
         </Reveal>
 
         {/* CTA */}
-        <Reveal className="mt-10 rounded-[24px] bg-ink p-6 text-white md:p-8">
-          <p className="eyebrow text-white/50">Ready to go further?</p>
-          <h2 className="display-kicker mt-2 text-white">
-            Lock in your numbers with a free site survey
-          </h2>
-          <p className="copy mt-2 max-w-[50ch] text-white/70">
-            Share your WhatsApp number and pincode. A senior engineer will send a full proposal — system size, subsidy,
-            EMI and install timeline — within 2 working hours.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <ArrowButton href="/contact" variant="light">Get a free proposal</ArrowButton>
-            <a
-              href={site.company.whatsappHref}
-              target="_blank"
-              rel="noreferrer"
-              className="ui inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-4 py-[9px] text-white transition hover:bg-white/20"
-            >
-              WhatsApp an engineer
-            </a>
-          </div>
+        <Reveal className="mt-10">
+          <SurveyCta />
         </Reveal>
       </Section>
     </>

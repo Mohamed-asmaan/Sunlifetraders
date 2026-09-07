@@ -60,7 +60,7 @@ export function RoiOverlayProvider({ children }: { children: ReactNode }) {
             role="dialog"
             aria-modal="true"
             aria-label="Solar savings calculator"
-            className="relative my-0 w-full max-w-5xl overflow-hidden bg-white md:my-8 md:rounded-[32px]"
+            className="relative my-0 w-full max-w-5xl overflow-hidden bg-white shadow-[0_24px_80px_rgba(17,17,17,0.2)] md:my-8 md:rounded-[32px]"
           >
             <div className="flex items-center justify-between border-b border-line px-5 py-4 md:px-7">
               <div>

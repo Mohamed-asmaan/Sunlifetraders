@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { AccentDot, Section, SectionIntro } from "@/components/ui/Section";
 import { MotionCard, Reveal } from "@/components/motion/Reveal";
 import ArrowButton from "@/components/ArrowButton";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import FranchiseForm from "@/components/FranchiseForm";
+import SurveyCta from "@/components/SurveyCta";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { seo, site } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -84,14 +87,7 @@ export default function FranchisePage() {
 
         <Reveal delay={0.35} className="mt-8 flex flex-wrap gap-3">
           <ArrowButton href="#apply">Apply now</ArrowButton>
-          <a
-            href={site.company.whatsappHref}
-            target="_blank"
-            rel="noreferrer"
-            className="ui inline-flex items-center gap-2 rounded-xl border border-line bg-soft px-4 py-[9px] text-ink transition hover:bg-white"
-          >
-            WhatsApp us first
-          </a>
+          <WhatsAppButton>WhatsApp us first</WhatsAppButton>
         </Reveal>
 
         {/* Stats */}
@@ -174,6 +170,15 @@ export default function FranchisePage() {
         </div>
       </Section>
 
+      <Section pad="tight">
+        <SurveyCta
+          title="Talk to us about a Sunlife franchise"
+          body="Share your district and WhatsApp number. Our partner desk will call within 1 working day with territory, training and investment details."
+          primaryHref="#apply"
+          primaryLabel="Apply now"
+        />
+      </Section>
+
       {/* Application form */}
       <Section pad="default" id="apply">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:items-start">
@@ -193,10 +198,8 @@ export default function FranchisePage() {
                 rel="noreferrer"
                 className="ui flex items-center gap-3 rounded-xl border border-line bg-soft p-4 text-ink transition hover:bg-white"
               >
-                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-ink text-white">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                    <path d="M12.04 2C6.58 2 2.15 6.4 2.15 11.83c0 1.73.45 3.4 1.3 4.88L2 22l5.45-1.42a10.1 10.1 0 0 0 4.59 1.1h.01c5.46 0 9.89-4.4 9.89-9.84C21.94 6.4 17.5 2 12.04 2z" />
-                  </svg>
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-[#25D366] text-white">
+                  <WhatsAppIcon size={16} />
                 </span>
                 <div>
                   <p className="text-sm font-medium">WhatsApp enquiry</p>

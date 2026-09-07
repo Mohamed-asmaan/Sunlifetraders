@@ -6,7 +6,7 @@ import { getProduct, getProducts } from "@/lib/cms";
 import { home, site, seo } from "@/lib/data";
 import { productCategories } from "@/lib/products";
 import ArrowButton from "@/components/ArrowButton";
-import { AccentDot, Section, SectionIntro } from "@/components/ui/Section";
+import { Section, SectionIntro } from "@/components/ui/Section";
 import { MotionCard, Reveal } from "@/components/motion/Reveal";
 
 const categoryLabel = Object.fromEntries(
@@ -73,7 +73,7 @@ export default async function ProductDetailPage({
               src={product.image}
               alt={product.alt || product.title}
               fill
-              className="object-cover"
+              className="object-contain"
               priority
               sizes="(max-width: 1024px) 100vw, 640px"
             />
@@ -181,9 +181,18 @@ export default async function ProductDetailPage({
                   key={item.slug}
                   i={i}
                   hover={-6}
-                  className="flex h-full flex-col rounded-2xl border border-line bg-white p-6"
+                  className="flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white"
                 >
-                  <AccentDot />
+                  <div className="relative aspect-[4/3] w-full bg-soft">
+                    <Image
+                      src={item.image}
+                      alt={item.alt || item.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 50vw, 25vw"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
                   <h3 className="display-kicker">{item.title}</h3>
                   {item.spec ? <p className="ui mt-1 text-ink/55">{item.spec}</p> : null}
                   <p className="copy mt-2 text-muted">{item.description}</p>
@@ -202,6 +211,7 @@ export default async function ProductDetailPage({
                       />
                     </svg>
                   </Link>
+                  </div>
                 </MotionCard>
               ))}
             </div>

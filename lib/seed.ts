@@ -22,8 +22,26 @@ export async function seed(payload: Payload) {
   if (siteDoc?.name === "Sunlife Traders LLP") {
     const products = await payload.find({ collection: "products", limit: 1 }).catch(() => ({ totalDocs: 0 }));
     const existingPages = await payload.find({ collection: "pages", limit: 1 }).catch(() => ({ totalDocs: 0 }));
+    const users = await payload.find({ collection: "users", limit: 1 });
+    if (users.totalDocs === 0) {
+      await payload.create({
+        collection: "users",
+        data: {
+          email: "admin@sunlifetraders.com",
+          password: "SunlifeAdmin2026!",
+          name: "Sunlife Admin",
+        },
+      });
+      payload.logger.info("Created Payload admin admin@sunlifetraders.com");
+    }
+
     const navHrefs = (siteDoc.navLinks ?? []).map((link) => link.href);
-    if (!navHrefs.includes("/products") || !navHrefs.includes("/services")) {
+    if (
+      !navHrefs.includes("/products") ||
+      !navHrefs.includes("/services") ||
+      !navHrefs.includes("/franchise") ||
+      !navHrefs.includes("/calculator")
+    ) {
       await payload.updateGlobal({
         slug: "site",
         data: {

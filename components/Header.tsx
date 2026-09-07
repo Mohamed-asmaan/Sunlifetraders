@@ -59,7 +59,7 @@ export default function Header({
       <div className="mx-auto flex max-w-[1310px] items-center justify-between px-[18px] py-3 md:px-[30px] md:py-3">
         <Logo />
 
-        <nav className="hidden items-center gap-6 lg:flex">
+        <nav className="hidden items-center gap-4 xl:gap-6 lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
