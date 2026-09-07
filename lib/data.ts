@@ -68,6 +68,8 @@ export const site: SiteContent = {
     { href: "/services", label: "Services" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
+    { href: "/franchise", label: "Franchise" },
+    { href: "/calculator", label: "Calculator" },
   ],
   headerCta: { href: "/contact", label: "Get Consultation" },
   socials: [
@@ -305,6 +307,7 @@ export const home: HomeContent = {
   },
   products: [
     {
+      slug: "poly-crystalline-12v",
       title: "Poly Crystalline",
       spec: "12V / 50–150 watts",
       description: "BIS, ALMM, DCR certified panel, ideal for efficient energy generation.",
@@ -314,6 +317,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "poly-crystalline-24v",
       title: "Poly Crystalline",
       spec: "24V / 160–335 watts",
       description: "High-performance 24V panel for reliable power, certified and durable.",
@@ -323,6 +327,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "monoperc-panel",
       title: "Monoperc Panel",
       spec: "24V / 250–400 watts",
       description: "Advanced Monoperc design for superior energy output and efficiency.",
@@ -332,6 +337,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "monoperc-half-cut",
       title: "Monoperc Half Cut (mono facial)",
       spec: "445–500 watts",
       description: "Half-cut cell technology for enhanced efficiency and energy yield.",
@@ -341,6 +347,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "monoperc-bifacial",
       title: "Monoperc Half-cut Bifacial",
       spec: "500–550 watts",
       description: "Bifacial solar panel maximizes power output from both sides.",
@@ -350,6 +357,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "monoperc-bifacial-topcon",
       title: "Monoperc Half-cut Bifacial Topcon",
       spec: "550–600 watts",
       description: "Topcon bifacial panel, designed for high efficiency in all conditions.",
@@ -359,6 +367,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "power-one-5kw-inverter",
       title: "Ongrid Inverter Power-One 5 kW",
       spec: "Input voltage 12V",
       description: "Reliable 5 kW inverter with 12V input for efficient residential solar conversion.",
@@ -368,6 +377,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "sofar-3-3kw-inverter",
       title: "Inverter Ongrid Sofar 3.3 TL kW",
       spec: "Input voltage 24V",
       description: "Efficient 3.3 kW inverter with 24V input and advanced solar energy management.",
@@ -377,6 +387,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "sofar-5kw-inverter",
       title: "Inverter Ongrid Sofar 5 kW",
       spec: "Input voltage 24V",
       description: "High-performance 5 kW inverter with 24V input for seamless solar-to-grid power.",
@@ -386,6 +397,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "deye-hybrid-inverter",
       title: "DEYE Hybrid Inverter",
       spec: "Hybrid system compatibility",
       description: "Advanced hybrid inverter for optimal solar and grid energy management.",
@@ -395,6 +407,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "evvo-inverter",
       title: "EVVO Inverter",
       spec: "2 kW to 250 kW · 10-year warranty",
       description: "Versatile EVVO inverter from 2 kW to 250 kW with a 10-year warranty.",
@@ -404,6 +417,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "bis-10kw-inverter",
       title: "BIS Certified Inverter 10 kW",
       spec: "10 kW output capacity",
       description: "Reliable 10 kW BIS certified inverter for efficient large-scale solar management.",
@@ -413,6 +427,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "3kw-grid-tie-plant",
       title: "3 kW Grid-tie Power Plant",
       spec: "Mono PERC Half-Cut",
       description: "Mono PERC Half-Cut rooftop plant for enhanced efficiency and energy yield.",
@@ -422,6 +437,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "8kw-ongrid-plant",
       title: "8 kW On-grid Power Plant",
       spec: "Mono PERC Half-Cut",
       description: "8 kW on-grid solar power plant with Mono PERC Half-Cut modules.",
@@ -431,6 +447,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "10kw-ongrid-poly",
       title: "10 kW On-grid Power Plant",
       spec: "Poly",
       description: "10 kW on-grid solar supply and installation with poly modules.",
@@ -440,6 +457,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "6kw-grid-connected-plant",
       title: "6 kW Grid-connected Power Plant",
       spec: "Mono PERC Half-Cut",
       description: "6 kW grid-connected rooftop plant with Mono PERC Half-Cut technology.",
@@ -449,6 +467,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "10kw-ongrid-mono",
       title: "10 kW On-grid Power Plant",
       spec: "Mono PERC Half-Cut",
       description: "Mono PERC Half-Cut technology for superior efficiency and energy output.",
@@ -458,6 +477,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "3kw-ongrid-poly",
       title: "3 kW On-grid Power Plant",
       spec: "Poly",
       description: "3 kW on-grid solar supply and installation with poly modules.",
@@ -467,6 +487,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "5kw-ongrid-mono",
       title: "5 kW On-grid Power Plant",
       spec: "Mono PERC Half-Cut",
       description: "5 kW on-grid rooftop plant with high-efficiency Mono PERC Half-Cut modules.",
@@ -476,6 +497,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "5kw-grid-connected-poly",
       title: "5 kW Grid-connected Roof System",
       spec: "Poly",
       description: "5 kW grid-connected rooftop system with poly modules.",
@@ -485,6 +507,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "8kw-grid-connected-poly",
       title: "8 kW Grid-connected Roof System",
       spec: "Poly",
       description: "8 kW grid-connected rooftop system with poly modules.",
@@ -494,6 +517,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "6kw-ongrid-poly",
       title: "6 kW On-grid Power Plant",
       spec: "Poly",
       description: "6 kW on-grid solar supply and installation with poly modules.",
@@ -503,6 +527,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "basic-rooftop-structures",
       title: "Basic Roof Top Structures",
       spec: "Residential & commercial",
       description: "Standard rooftop mounting structures engineered for Kerala and Tamil Nadu wind loads.",
@@ -512,6 +537,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "sheet-rooftop-structures",
       title: "Sheet Roof Top Structures",
       spec: "Metal sheet roofs",
       description: "Mounting systems designed for sheet roofs without compromising waterproofing.",
@@ -521,6 +547,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "solar-walkways",
       title: "Walkways",
       spec: "Service access",
       description: "Safe walkways for inspection and maintenance across the array.",
@@ -530,6 +557,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "aluminium-structures",
       title: "Aluminium Structures",
       spec: "Lightweight, corrosion-resistant",
       description: "Aluminium mounting for coastal and high-humidity sites.",
@@ -539,6 +567,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "clamps-nuts-bolts",
       title: "Clamps, Nut & Bolts",
       spec: "Hardware kit",
       description: "Certified clamps, nuts and bolts for a complete structural assembly.",
@@ -548,6 +577,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "acdb",
       title: "ACDB",
       spec: "AC distribution",
       description: "AC distribution box for safe, compliant rooftop interconnection.",
@@ -557,6 +587,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "dcdb",
       title: "DCDB",
       spec: "DC distribution",
       description: "DC distribution box with isolation and protection on the array side.",
@@ -566,6 +597,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "mc4-connectors",
       title: "MC4 Connectors",
       spec: "Array cabling",
       description: "Weather-sealed MC4 connectors for reliable string connections.",
@@ -575,6 +607,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "solar-cables",
       title: "Cables",
       spec: "DC / AC solar cable",
       description: "UV-rated solar cables sized for your string and inverter load.",
@@ -584,6 +617,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "earthing-materials",
       title: "Earthing Materials",
       spec: "Safety kit",
       description: "Earthing pits, strips and clamps for a code-compliant ground path.",
@@ -593,6 +627,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "lightning-arrestor",
       title: "Lightning Arrestor",
       spec: "Surge protection",
       description: "Lightning arrestors to protect the array and inverter from surge events.",
@@ -602,6 +637,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "net-metering-meter",
       title: "Meters",
       spec: "Net-metering approved",
       description: "Bidirectional smart meters approved for KSEB and TANGEDCO net-metering.",
@@ -611,6 +647,7 @@ export const home: HomeContent = {
       cta: "Get a quote",
     },
     {
+      slug: "solar-water-heater",
       title: "Solar Water Heater",
       spec: "Residential & commercial",
       description: "Solar water heating for homes and businesses — cut the geyser load on the same roof.",

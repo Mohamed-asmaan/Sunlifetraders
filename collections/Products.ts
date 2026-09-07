@@ -8,12 +8,20 @@ export const Products: CollectionConfig = {
   admin: {
     group: "Website",
     useAsTitle: "title",
-    defaultColumns: ["title", "category", "order", "updatedAt"],
-    description: "Catalogue shown on the home page. No separate product routes.",
+    defaultColumns: ["title", "slug", "category", "order", "updatedAt"],
+    description: "Product catalogue. Each product has its own /products/[slug] detail page.",
   },
   access: { read: () => true },
   fields: [
     { name: "title", type: "text", required: true },
+    {
+      name: "slug",
+      type: "text",
+      required: true,
+      unique: true,
+      index: true,
+      admin: { description: "URL slug, e.g. waaree-bifacial-540w. Auto-generated from title if blank." },
+    },
     { name: "spec", type: "text", admin: { description: "Short spec line, e.g. 24V / 250–400 watts" } },
     { name: "description", type: "textarea", required: true },
     {

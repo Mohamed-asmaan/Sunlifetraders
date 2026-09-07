@@ -206,6 +206,7 @@ export const getHomePage = cache(async (): Promise<HomeContent> => {
       products: many(
         productDocs.docs,
         (doc, i) => ({
+          slug: (doc as { slug?: string }).slug || home.products[i]?.slug || String(i),
           title: doc.title,
           description: doc.description,
           spec: doc.spec || undefined,
@@ -343,6 +344,53 @@ export const getPage = cache(async (slug: string): Promise<CmsPage | null> => {
         }),
         fallback?.sections ?? [],
       ),
+    };
+  } catch {
+    return fallback;
+  }
+});
+
+export const getProducts = cache(async (): Promise<HomeContent["products"]> => {
+  try {
+    const payload = await payloadSafe();
+    const result = await payload.find({ collection: "products", limit: 200, sort: "order" });
+    if (!result.docs.length) return home.products;
+    return result.docs.map((doc, i) => ({
+      slug: (doc as { slug?: string }).slug || home.products[i]?.slug || String(i),
+      title: doc.title,
+      description: doc.description,
+      spec: doc.spec || undefined,
+      category: (doc.category || home.products[i]?.category || "pv") as HomeContent["products"][number]["category"],
+      image: doc.image || imageAt(home.products, i),
+      alt: doc.alt || "",
+      cta: doc.cta || "Get a quote",
+    }));
+  } catch {
+    return home.products;
+  }
+});
+
+export const getProduct = cache(async (slug: string): Promise<HomeContent["products"][number] | null> => {
+  const fallback = home.products.find((p) => p.slug === slug) ?? null;
+  try {
+    const payload = await payloadSafe();
+    const result = await payload.find({
+      collection: "products",
+      where: { slug: { equals: slug } },
+      limit: 1,
+    });
+    const doc = result.docs[0];
+    if (!doc) return fallback;
+    const i = home.products.findIndex((p) => p.slug === slug);
+    return {
+      slug: (doc as { slug?: string }).slug || slug,
+      title: doc.title,
+      description: doc.description,
+      spec: doc.spec || undefined,
+      category: (doc.category || fallback?.category || "pv") as HomeContent["products"][number]["category"],
+      image: doc.image || fallback?.image || imageAt(home.products, Math.max(i, 0)),
+      alt: doc.alt || "",
+      cta: doc.cta || "Get a quote",
     };
   } catch {
     return fallback;

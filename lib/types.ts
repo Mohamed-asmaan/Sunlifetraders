@@ -129,6 +129,7 @@ export type Project = {
 export type ProductCategory = "pv" | "inverter" | "rooftop" | "structure" | "bos" | "heater";
 
 export type Product = {
+  slug: string;
   title: string;
   description: string;
   spec?: string;

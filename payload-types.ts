@@ -232,7 +232,7 @@ export interface Project {
   createdAt: string;
 }
 /**
- * Catalogue shown on the home page. No separate product routes.
+ * Product catalogue. Each product has its own /products/[slug] detail page.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
@@ -240,6 +240,10 @@ export interface Project {
 export interface Product {
   id: number;
   title: string;
+  /**
+   * URL slug, e.g. waaree-bifacial-540w. Auto-generated from title if blank.
+   */
+  slug: string;
   /**
    * Short spec line, e.g. 24V / 250–400 watts
    */
@@ -493,6 +497,7 @@ export interface ProjectsSelect<T extends boolean = true> {
  */
 export interface ProductsSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   spec?: T;
   description?: T;
   category?: T;

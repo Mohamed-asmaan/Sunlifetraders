@@ -36,12 +36,26 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: seo.title,
+  metadataBase: new URL("https://sunlifetraders.com"),
+  title: {
+    default: seo.title,
+    template: `%s | Sunlife Traders LLP`,
+  },
   description: seo.description,
   openGraph: {
     title: seo.title,
     description: seo.description,
     type: "website",
+    url: "https://sunlifetraders.com",
+    siteName: "Sunlife Traders LLP",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: seo.title,
+    description: seo.description,
+  },
+  alternates: {
+    canonical: "https://sunlifetraders.com",
   },
 };
 

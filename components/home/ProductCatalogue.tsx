@@ -46,7 +46,7 @@ export default function ProductCatalogue({ intro, items }: { intro: Intro; items
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {visible.map((item, i) => (
           <MotionCard
-            key={`${item.category}-${item.title}-${item.spec ?? i}`}
+            key={`${item.category}-${item.slug ?? i}`}
             i={i}
             hover={-6}
             amount={0.2}
@@ -56,7 +56,10 @@ export default function ProductCatalogue({ intro, items }: { intro: Intro; items
             <h3 className="display-card mt-3">{item.title}</h3>
             {item.spec ? <p className="ui mt-2 text-ink/55">{item.spec}</p> : null}
             <p className="mt-2 text-sm leading-relaxed text-muted">{item.description}</p>
-            <Link href="/#franchise" className="ui mt-auto inline-flex items-center gap-1 pt-5 text-ink">
+            <Link
+              href={item.slug ? `/products/${item.slug}` : "/contact"}
+              className="ui mt-auto inline-flex items-center gap-1 pt-5 text-ink"
+            >
               {item.cta ?? "Get a quote"}
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
                 <path d="M3 6h6M6.5 3.5 9 6 6.5 8.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />

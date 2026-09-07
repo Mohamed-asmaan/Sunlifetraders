@@ -1,16 +1,23 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import PageView from "@/components/PageView";
+import ServicesView from "@/components/ServicesView";
 import { getPage } from "@/lib/cms";
 import { seo } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: `Services | ${seo.title}`,
-  description: "Rooftop and ground-mount install, maintenance and AMC from Sunlife Traders LLP.",
+  title: `Solar Services | ${seo.title}`,
+  description:
+    "Rooftop installation, ground mount, solar plant maintenance and AMC from Sunlife Traders LLP. MNRE subsidy up to ₹78,000. EMI from ₹1,200/lakh.",
+  openGraph: {
+    title: "Solar Services | Sunlife Traders LLP",
+    description:
+      "Rooftop and ground-mount installation, maintenance and AMC from Pothencode. MNRE certified, KSEB/TANGEDCO approved.",
+    type: "website",
+  },
 };
 
 export default async function ServicesPage() {
   const page = await getPage("services");
   if (!page) notFound();
-  return <PageView page={page} />;
+  return <ServicesView page={page} />;
 }
