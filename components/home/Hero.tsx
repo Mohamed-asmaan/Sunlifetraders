@@ -7,6 +7,7 @@ import ArrowButton from "@/components/ArrowButton";
 import { openRoi } from "@/components/roi/RoiOverlay";
 import { BlurWords, easeOutExpo, fadeUp } from "@/components/motion/Reveal";
 import type { HeroContent, HeroSlide } from "@/lib/types";
+import skyBg from "../../public/images/hero/sky.png";
 
 function WordLine({
   as: Tag,
@@ -133,7 +134,7 @@ export default function Hero({ hero }: { hero: HeroContent }) {
   return (
     <section id="hero" className="relative overflow-hidden">
       <Image
-        src={slide.skyImage}
+        src={skyBg}
         alt=""
         fill
         priority

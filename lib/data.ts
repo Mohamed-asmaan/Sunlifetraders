@@ -60,8 +60,6 @@ export const site: SiteContent = {
     { href: "/products", label: "Products" },
     { href: "/services", label: "Services" },
     { href: "/about", label: "About" },
-    { href: "/franchise", label: "Franchise" },
-    { href: "/calculator", label: "Calculator" },
     { href: "/contact", label: "Contact" },
   ],
   footerLinks: [
