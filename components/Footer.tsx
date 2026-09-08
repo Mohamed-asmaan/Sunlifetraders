@@ -10,6 +10,7 @@ const strip = [
   { src: "/images/footer/strip-2.jpg", alt: "Mountain home with rooftop solar" },
   { src: "/images/footer/strip-3.jpg", alt: "Aerial solar array in green fields" },
   { src: "/images/footer/strip-4.jpg", alt: "Solar panels on a tiled roof" },
+  // { src: "/images/footer/strip-5.jpg", alt: "Solar panels on a tiled roof" },
 ];
 
 function SocialGlyph({ label }: { label: string }) {
@@ -57,7 +58,7 @@ export default function Footer({
       <div className="grid grid-cols-2 md:grid-cols-4">
         {strip.map((image) => (
           <div key={image.src} className="relative h-[180px] sm:h-[240px] md:h-[320px] lg:h-[400px]">
-            <Image src={image.src} alt={image.alt} fill className="object-cover" sizes="25vw" />
+            <Image src={image.src} alt={image.alt} fill className="h-full w-full object-cover" sizes="25vw" quality={100} />
           </div>
         ))}
       </div>

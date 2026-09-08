@@ -103,11 +103,15 @@ export const getSite = cache(async (): Promise<SiteContent> => {
         footerDescription: text(doc.footerDescription, site.company.footerDescription),
         footerCta: text(doc.footerCta, site.company.footerCta),
         certifications: many(doc.certifications, (item) => item.label, site.company.certifications),
-        offices: many(
-          doc.offices,
-          (item) => ({ city: item.city, address: item.address }),
-          site.company.offices,
-        ),
+        offices: (() => {
+          const list = many(
+            doc.offices,
+            (item) => ({ city: item.city, address: item.address }),
+            site.company.offices,
+          );
+          const cities = new Set(list.map((office) => office.city));
+          return [...list, ...site.company.offices.filter((office) => !cities.has(office.city))];
+        })(),
       },
       navLinks: (() => {
         const links = many(doc.navLinks, (link) => ({ href: link.href, label: link.label }), site.navLinks);

@@ -49,6 +49,10 @@ export const site: SiteContent = {
         city: "Kollam, Kerala",
         address: "Venga, Sasthamcotta, Kollam, 690521",
       },
+      {
+        city: "Chennai, Tamil Nadu",
+        address: "No.79, Thiruvalluvar Street, Gandhi Street, Perungudi, Chennai, Tamil Nadu 600096",
+      },
     ],
     footerHeadline: "Sustainable solar energy for South Indian homes",
     footerDescription:

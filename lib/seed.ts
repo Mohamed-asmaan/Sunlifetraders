@@ -35,6 +35,13 @@ export async function seed(payload: Payload) {
       payload.logger.info("Created Payload admin admin@sunlifetraders.com");
     }
 
+    const officeCities = (siteDoc.offices ?? []).map((office) => office.city);
+    if (officeCities.length < site.company.offices.length || !officeCities.includes("Chennai, Tamil Nadu")) {
+      await payload.updateGlobal({
+        slug: "site",
+        data: { offices: site.company.offices },
+      });
+    }
     const navHrefs = (siteDoc.navLinks ?? []).map((link) => link.href);
     if (
       !navHrefs.includes("/products") ||

@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
     // Serve modern formats automatically — avif first, then webp, then original
     formats: ["image/avif", "image/webp"],
     // Two quality breakpoints: regular and high-DPI
-    qualities: [75, 90],
+    qualities: [75, 90, 100],
     // Device sizes that match our layout breakpoints
     deviceSizes: [390, 640, 768, 1024, 1280, 1536],
     // Image sizes used in <Image> with `sizes` prop for thumbnails / cards
