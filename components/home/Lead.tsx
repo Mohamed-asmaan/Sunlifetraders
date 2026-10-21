@@ -4,11 +4,13 @@ import { FormEvent, useState } from "react";
 import { Section, SectionIntro } from "@/components/ui/Section";
 import { fieldClass, submitClass } from "@/components/ui/form";
 import { submitLead } from "@/lib/actions";
+import LeadFallback from "@/components/ui/LeadFallback";
 import { Reveal } from "@/components/motion/Reveal";
 import type { Intro } from "@/lib/types";
 
 export default function Lead({ intro }: { intro: Intro & { cta: string } }) {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [fallback, setFallback] = useState("");
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -22,6 +24,7 @@ export default function Lead({ intro }: { intro: Intro & { cta: string } }) {
       form.reset();
       return;
     }
+    setFallback(result.whatsappUrl);
     setStatus("error");
   }
 
@@ -52,9 +55,7 @@ export default function Lead({ intro }: { intro: Intro & { cta: string } }) {
                 Thanks! We’ll WhatsApp your proposal within 2 working hours.
               </p>
             ) : null}
-            {status === "error" ? (
-              <p className="mt-3 text-sm text-red-600">Something went wrong. Please try again.</p>
-            ) : null}
+            {status === "error" ? <LeadFallback whatsappUrl={fallback} /> : null}
           </form>
         </Reveal>
       </div>

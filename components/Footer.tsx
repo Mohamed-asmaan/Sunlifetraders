@@ -91,8 +91,8 @@ export default function Footer({
                     <a
                       key={social.label}
                       href={social.href}
-                      target="_blank"
-                      rel="noreferrer"
+                      target={social.href.startsWith("http") ? "_blank" : undefined}
+                      rel={social.href.startsWith("http") ? "noreferrer" : undefined}
                       aria-label={social.label}
                       className="text-ink transition hover:text-ink/45"
                     >

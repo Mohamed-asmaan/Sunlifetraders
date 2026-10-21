@@ -12,6 +12,7 @@ import ContactAssist from "@/components/ContactAssist";
 import Certifications from "@/components/Certifications";
 import SurveyCta from "@/components/SurveyCta";
 import { submitLead } from "@/lib/actions";
+import LeadFallback from "@/components/ui/LeadFallback";
 import { fieldClass, submitClass } from "@/components/ui/form";
 import type { CmsPage } from "@/lib/types";
 
@@ -430,6 +431,7 @@ const BILL_OPTIONS = [
 
 function ServiceLeadForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [fallback, setFallback] = useState("");
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -446,6 +448,7 @@ function ServiceLeadForm() {
       form.reset();
       return;
     }
+    setFallback(result.whatsappUrl);
     setStatus("error");
   }
 
@@ -493,9 +496,7 @@ function ServiceLeadForm() {
       {status === "sent" ? (
         <p className="mt-3 text-sm text-ink">Thanks — we&apos;ll get back to you shortly.</p>
       ) : null}
-      {status === "error" ? (
-        <p className="mt-3 text-sm text-red-600">Something went wrong. Please try again.</p>
-      ) : null}
+      {status === "error" ? <LeadFallback whatsappUrl={fallback} /> : null}
     </form>
   );
 }

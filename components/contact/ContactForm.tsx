@@ -2,10 +2,12 @@
 
 import { FormEvent, useState } from "react";
 import { submitLead } from "@/lib/actions";
+import LeadFallback from "@/components/ui/LeadFallback";
 import { areaClass, fieldClass, submitClass } from "@/components/ui/form";
 
 export default function ContactForm({ propertyTypes }: { propertyTypes: string[] }) {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [fallback, setFallback] = useState("");
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -18,6 +20,7 @@ export default function ContactForm({ propertyTypes }: { propertyTypes: string[]
       form.reset();
       return;
     }
+    setFallback(result.whatsappUrl);
     setStatus("error");
   }
 
@@ -62,9 +65,7 @@ export default function ContactForm({ propertyTypes }: { propertyTypes: string[]
       {status === "sent" ? (
         <p className="mt-3 text-sm text-ink">Thanks — we’ll get back to you shortly.</p>
       ) : null}
-      {status === "error" ? (
-        <p className="mt-3 text-sm text-red-600">Something went wrong. Please try again.</p>
-      ) : null}
+      {status === "error" ? <LeadFallback whatsappUrl={fallback} /> : null}
     </form>
   );
 }

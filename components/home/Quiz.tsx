@@ -4,6 +4,7 @@ import { FormEvent, useState } from "react";
 import { Section, SectionIntro } from "@/components/ui/Section";
 import { fieldClass, submitClass } from "@/components/ui/form";
 import { submitLead } from "@/lib/actions";
+import LeadFallback from "@/components/ui/LeadFallback";
 import { Reveal } from "@/components/motion/Reveal";
 import type { QuizContent } from "@/lib/types";
 
@@ -18,6 +19,7 @@ export default function Quiz({ quiz }: { quiz: QuizContent }) {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<string[]>(Array(quiz.questions.length).fill(""));
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [fallback, setFallback] = useState("");
   const question = quiz.questions[step];
   const last = step === quiz.questions.length - 1;
 
@@ -38,6 +40,7 @@ export default function Quiz({ quiz }: { quiz: QuizContent }) {
       quiz.questions.map((item, i) => `${item.question} ${answers[i]}`).join("\n"),
     );
     const result = await submitLead(data);
+    setFallback(result.whatsappUrl);
     setStatus(result.ok ? "sent" : "error");
   }
 
@@ -102,9 +105,7 @@ export default function Quiz({ quiz }: { quiz: QuizContent }) {
               >
                 {status === "sending" ? "Sending…" : last ? "Reveal my savings" : "Next"}
               </button>
-              {status === "error" ? (
-                <p className="mt-3 text-sm text-red-600">Something went wrong. Please try again.</p>
-              ) : null}
+              {status === "error" ? <LeadFallback whatsappUrl={fallback} /> : null}
             </form>
           )}
         </Reveal>

@@ -2,9 +2,11 @@
 
 import { FormEvent, useState } from "react";
 import { submitLead } from "@/lib/actions";
+import LeadFallback from "@/components/ui/LeadFallback";
 
 export default function FranchiseForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [fallback, setFallback] = useState("");
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -18,6 +20,7 @@ export default function FranchiseForm() {
       form.reset();
       return;
     }
+    setFallback(result.whatsappUrl);
     setStatus("error");
   }
 
@@ -80,9 +83,7 @@ export default function FranchiseForm() {
         />
       </label>
 
-      {status === "error" ? (
-        <p className="copy text-red-500">Something went wrong. Please try again.</p>
-      ) : null}
+      {status === "error" ? <LeadFallback whatsappUrl={fallback} /> : null}
 
       <button
         type="submit"

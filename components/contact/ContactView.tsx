@@ -5,6 +5,7 @@ import { AccentDot, Section, SectionIntro } from "@/components/ui/Section";
 import { Reveal, MotionCard } from "@/components/motion/Reveal";
 import { fieldClass, areaClass, submitClass } from "@/components/ui/form";
 import { submitLead } from "@/lib/actions";
+import LeadFallback from "@/components/ui/LeadFallback";
 import type { ContactContent } from "@/lib/types";
 
 const CONTACT_FAQS = [
@@ -50,11 +51,16 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 
 function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [fallback, setFallback] = useState("");
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
+    const bill = String(data.get("bill") || "").trim();
+    const needs = String(data.get("needs") || "").trim();
+    data.set("source", "contact");
+    data.set("message", [bill && `Bill: ${bill}`, needs && `Needs: ${needs}`].filter(Boolean).join("\n"));
     setStatus("sending");
     const result = await submitLead(data);
     if (result.ok) {
@@ -62,6 +68,7 @@ function ContactForm() {
       form.reset();
       return;
     }
+    setFallback(result.whatsappUrl);
     setStatus("error");
   }
 
@@ -94,11 +101,11 @@ function ContactForm() {
       </label>
       <label className="mt-4 block text-sm">
         <span className="mb-2 block font-medium">Current Electricity Bill</span>
-        <input name="message" className={fieldClass} placeholder="e.g. ₹3,000/month" />
+        <input name="bill" className={fieldClass} placeholder="e.g. ₹3,000/month" />
       </label>
       <label className="mt-4 block text-sm">
         <span className="mb-2 block font-medium">Your Service Needs</span>
-        <textarea name="source" rows={4} className={areaClass} placeholder="Tell us about your requirements…" />
+        <textarea name="needs" rows={4} className={areaClass} placeholder="Tell us about your requirements…" />
       </label>
       <button type="submit" disabled={status === "sending"} className={submitClass}>
         {status === "sending" ? "Submitting…" : "Submit"}
@@ -106,9 +113,7 @@ function ContactForm() {
       {status === "sent" ? (
         <p className="mt-3 text-sm text-ink">Thanks — we&apos;ll get back to you shortly.</p>
       ) : null}
-      {status === "error" ? (
-        <p className="mt-3 text-sm text-red-600">Something went wrong. Please try again.</p>
-      ) : null}
+      {status === "error" ? <LeadFallback whatsappUrl={fallback} /> : null}
     </form>
   );
 }
