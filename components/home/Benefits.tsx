@@ -103,9 +103,11 @@ export default function Benefits({
               <button
                 key={item.title}
                 type="button"
-                className={`flex w-full gap-4 rounded-[18px] bg-white px-4 py-3.5 text-left md:px-5 md:py-4 ${
+                className={`flex w-full cursor-pointer gap-4 rounded-[18px] bg-white px-4 py-3.5 text-left md:px-5 md:py-4 ${
                   active ? "items-start" : "items-center"
                 }`}
+                onMouseEnter={() => setOpen(i)}
+                onFocus={() => setOpen(i)}
                 onClick={() => setOpen(i)}
                 aria-expanded={active}
               >

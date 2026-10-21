@@ -570,13 +570,13 @@ export default function ServiceDetailView({ page }: { page: CmsPage }) {
             <h2 className="display-kicker mt-2">
               Did you know that the PM-Surya Ghar Solar Project offers up to ₹78,000 in government subsidies?
             </h2>
-            <div className="relative mx-auto my-4 h-28 w-28 overflow-hidden rounded-[20px] bg-ink">
+            <div className="relative my-4 aspect-[16/9] w-full">
               <Image
                 src="/images/services/subsidy.png"
                 alt="Government solar subsidy"
                 fill
-                className="object-contain p-2"
-                sizes="112px"
+                className="object-contain"
+                sizes="(max-width: 1024px) 100vw, 520px"
               />
             </div>
             <p className="copy text-ink/75">{data.subsidyBody}</p>
@@ -676,8 +676,21 @@ export default function ServiceDetailView({ page }: { page: CmsPage }) {
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
             {OFFERS.map((item) => (
               <div key={item.label} className="flex items-center gap-3 rounded-[20px] border border-line bg-white p-4">
-                <div className="grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-xl bg-ink">
-                  <Image src={item.icon} alt="" width={36} height={36} className="h-8 w-8 object-contain" />
+                <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-amber-light">
+                  <span
+                    aria-hidden
+                    className="h-7 w-7 bg-amber"
+                    style={{
+                      maskImage: `url(${item.icon})`,
+                      WebkitMaskImage: `url(${item.icon})`,
+                      maskSize: "contain",
+                      WebkitMaskSize: "contain",
+                      maskRepeat: "no-repeat",
+                      WebkitMaskRepeat: "no-repeat",
+                      maskPosition: "center",
+                      WebkitMaskPosition: "center",
+                    }}
+                  />
                 </div>
                 <p className="ui text-ink">{item.label}</p>
               </div>
