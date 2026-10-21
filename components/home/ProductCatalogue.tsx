@@ -20,16 +20,53 @@ const categoryLabel = Object.fromEntries(productCategories.map((item) => [item.v
 
 export default function ProductCatalogue({ intro, items }: { intro: Intro; items: Product[] }) {
   const [filter, setFilter] = useState<(typeof filters)[number]["value"]>("all");
-  const visible = useMemo(
-    () => (filter === "all" ? items : items.filter((item) => item.category === filter)),
-    [filter, items],
-  );
+  const [query, setQuery] = useState("");
+  const visible = useMemo(() => {
+    const needle = query.trim().toLowerCase();
+    return items.filter((item) => {
+      if (filter !== "all" && item.category !== filter) return false;
+      if (!needle) return true;
+      const haystack = [
+        item.title,
+        item.spec ?? "",
+        item.description,
+        item.slug,
+        categoryLabel[item.category],
+      ]
+        .join(" ")
+        .toLowerCase();
+      return haystack.includes(needle);
+    });
+  }, [filter, items, query]);
 
   return (
     <Section id="products" pad="tight">
       <SectionIntro badge={intro.badge} title={intro.title} description={intro.description} />
 
-      <div className="mt-8 flex gap-2 overflow-x-auto pb-1">
+      <div className="mt-8 flex flex-col gap-4">
+        <label className="relative block max-w-xl">
+          <span className="sr-only">Search products</span>
+          <svg
+            className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-ink/40"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden
+          >
+            <circle cx="11" cy="11" r="6.25" stroke="currentColor" strokeWidth="1.7" />
+            <path d="M16 16.5 20 20.5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+          </svg>
+          <input
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Search panels, inverters, 5 kW, Sofar…"
+            className="w-full rounded-full border border-line bg-white py-3 pr-4 pl-11 text-[16px] text-ink outline-none placeholder:text-ink/40 focus:border-amber"
+          />
+        </label>
+
+        <div className="flex gap-2 overflow-x-auto pb-1">
         {filters.map((item) => (
           <button
             key={item.value}
@@ -42,7 +79,14 @@ export default function ProductCatalogue({ intro, items }: { intro: Intro; items
             {item.label}
           </button>
         ))}
+        </div>
       </div>
+
+      {visible.length === 0 ? (
+        <p className="mt-10 text-[17px] text-muted">
+          No products match “{query.trim()}”. Try another name, wattage, or brand.
+        </p>
+      ) : null}
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {visible.map((item, i) => (

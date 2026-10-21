@@ -141,10 +141,9 @@ export const getSite = cache(async (): Promise<SiteContent> => {
 export const getHomePage = cache(async (): Promise<HomeContent> => {
   try {
     const payload = await payloadSafe();
-    const [page, projectDocs, testimonialDocs, faqDocs, productDocs] = await Promise.all([
+    const [page, projectDocs, faqDocs, productDocs] = await Promise.all([
       payload.findGlobal({ slug: "home" }),
       payload.find({ collection: "projects", limit: 50, sort: "order" }),
-      payload.find({ collection: "testimonials", limit: 50, sort: "order" }),
       payload.find({ collection: "faqs", limit: 50, sort: "order" }),
       payload.find({ collection: "products", limit: 100, sort: "order" }),
     ]);
@@ -272,11 +271,7 @@ export const getHomePage = cache(async (): Promise<HomeContent> => {
         ),
       },
       testimonialsIntro: intro(page.testimonialsIntro, home.testimonialsIntro),
-      testimonials: many(
-        testimonialDocs.docs,
-        (doc, i) => ({ name: doc.name, quote: doc.quote, image: imageAt(home.testimonials, i) }),
-        home.testimonials,
-      ),
+      testimonials: home.testimonials,
       faqIntro: {
         ...intro(page.faqIntro, home.faqIntro),
         helpTitle: text(page.faqIntro?.helpTitle, home.faqIntro.helpTitle),

@@ -6,6 +6,7 @@ import { getProduct, getProducts } from "@/lib/cms";
 import { home, site, seo } from "@/lib/data";
 import { productCategories } from "@/lib/products";
 import ArrowButton from "@/components/ArrowButton";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { Section, SectionIntro } from "@/components/ui/Section";
 import { MotionCard, Reveal } from "@/components/motion/Reveal";
 
@@ -108,6 +109,7 @@ export default async function ProductDetailPage({
                 rel="noreferrer"
                 className="ui inline-flex items-center gap-2 rounded-xl border border-line bg-soft px-4 py-[9px] text-ink transition hover:bg-white"
               >
+                <WhatsAppIcon size={16} />
                 WhatsApp enquiry
               </Link>
             </Reveal>

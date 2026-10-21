@@ -762,34 +762,117 @@ export const home: HomeContent = {
     ],
   },
   testimonialsIntro: {
-    badge: "Testimonials",
+    badge: "Google reviews",
     title: "Trusted solar for Kerala & Tamil Nadu homes",
-    description: "Named reviews from Sunlife-installed rooftops. 4.8/5 from 200+ Google reviews.",
+    description: "Real customer reviews from Google. Empty star-only posts are left out.",
   },
   testimonials: [
     {
-      name: "Govind · Homeowner",
+      name: "Govind Up",
       quote:
-        "The team handled every approval. My first bill after installation was under ₹200. Two years on, still the same.",
-      image: "/images/reviews/daniel.png",
+        "I had plans to invest in solar for long and nearly spent months in research, got estimates from 5 different people.",
+      image: "",
     },
     {
-      name: "Avinesh Vasudevan · Homeowner",
+      name: "Sreelal Sreedharan Pillai",
       quote:
-        "Professional survey, clean install, and the Solarman app lets me watch every unit generated. Worth every rupee.",
-      image: "/images/reviews/michael.png",
+        "Had a great experience working with the team. The entire process, from the initial consultation to the final installation, was smooth and professional. Highly recommended.",
+      image: "",
     },
     {
-      name: "Simith T V · Homeowner",
+      name: "Sana Anaz",
       quote:
-        "They spoke plainly about subsidy, EMI and payback. No pressure. Delivered exactly what they promised.",
-      image: "/images/reviews/emily.png",
+        "Recently 5 kW solar system installed in my house. One of the best service and affordable prices.",
+      image: "",
     },
     {
-      name: "R. Kumar · Homeowner",
+      name: "Simith T V",
       quote:
-        "Sized for our EV before we bought it. Solar plus car: total electricity spend is under ₹500 a month now.",
-      image: "/images/reviews/ethan.png",
+        "I installed a 3 kW system from them. Very professional service, they use quality materials for installation. Getting promised production and they follow through all stages as per schedules.",
+      image: "",
+    },
+    {
+      name: "Muhammed Riyas Fazal",
+      quote:
+        "An excellent professional and efficient installation. Very good interaction with all team members throughout the process. Highly satisfied.",
+      image: "",
+    },
+    {
+      name: "Biju Vasudevan",
+      quote:
+        "I installed 3 kW solar panel instantly. They are very professional in work and using quality materials.",
+      image: "",
+    },
+    {
+      name: "Avinesh Vasudevan",
+      quote:
+        "I recently had a 3 kW solar panel system installed by Sunlife Solar at my home in Trivandrum. The entire process, from start to finish, was handled professionally.",
+      image: "",
+    },
+    {
+      name: "Dhilna Suneer",
+      quote: "Excellent service and affordable rate.",
+      image: "",
+    },
+    {
+      name: "Rejith R R",
+      quote: "Very professional service. Provided end to end support.",
+      image: "",
+    },
+    {
+      name: "B. Suresh Kumar",
+      quote: "Very prompt and providing good service in all respect.",
+      image: "",
+    },
+    {
+      name: "ShaH Azhicode",
+      quote: "Awesome work. Perfect plan.",
+      image: "",
+    },
+    {
+      name: "RENJITH SR",
+      quote: "Good work and experience. Workers were excellent. I recommended their work.",
+      image: "",
+    },
+    {
+      name: "jins babu",
+      quote: "Very good experience, good work.",
+      image: "",
+    },
+    {
+      name: "Jose Andrew",
+      quote: "Nice work.",
+      image: "",
+    },
+    {
+      name: "chandu ragendu",
+      quote: "Nice service.",
+      image: "",
+    },
+    {
+      name: "Ansad Salam",
+      quote: "Good service.",
+      image: "",
+    },
+    {
+      name: "SAN & SAVIO",
+      quote: "Good service.",
+      image: "",
+    },
+    {
+      name: "mash subhagan",
+      quote: "Good work and service.",
+      image: "",
+    },
+    {
+      name: "Alen Antony",
+      quote: "Good experience.",
+      image: "",
+    },
+    {
+      name: "santha Kk",
+      quote: "Good service.",
+      image: "",
     },
   ],
   faqIntro: {

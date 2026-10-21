@@ -27,7 +27,7 @@ export default function WhatsAppButton({
       rel="noreferrer"
       className={`ui inline-flex items-center gap-2 rounded-xl px-4 py-[9px] transition ${styles} ${className}`}
     >
-      <WhatsAppIcon size={16} />
+      <WhatsAppIcon size={16} className={variant === "solid" ? "text-white" : undefined} />
       {children}
     </Link>
   );

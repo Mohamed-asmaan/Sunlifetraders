@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Section, SectionIntro } from "@/components/ui/Section";
 import type { Intro, Office } from "@/lib/types";
@@ -16,22 +15,6 @@ const PIN_BY_CITY: Record<string, string> = {
 const PIN_ORDER = ["kollam", "thiruvananthapuram", "karankodu", "thiruvithancode", "chennai"];
 const CITY_BY_PIN = Object.fromEntries(Object.entries(PIN_BY_CITY).map(([city, pin]) => [pin, city]));
 
-const LANDMARK: Record<string, string> = {
-  "Thiruvananthapuram, Kerala": "Temple city · Kovalam coast",
-  "Kanyakumari (Karankodu), Tamil Nadu": "Land's end · Vivekananda Rock",
-  "Kanyakumari (Thiruvithancode), Tamil Nadu": "Padmanabhapuram Palace",
-  "Kollam, Kerala": "Ashtamudi backwaters",
-  "Chennai, Tamil Nadu": "Perungudi · OMR corridor",
-};
-
-const PHOTO: Record<string, string> = {
-  "Thiruvananthapuram, Kerala": "/images/locations/tvm.jpg",
-  "Kanyakumari (Karankodu), Tamil Nadu": "/images/locations/kanyakumari.jpg",
-  "Kanyakumari (Thiruvithancode), Tamil Nadu": "/images/locations/palace.jpg",
-  "Kollam, Kerala": "/images/locations/kollam.jpg",
-  "Chennai, Tamil Nadu": "/images/locations/chennai.jpg",
-};
-
 function mapsHref(address: string) {
   return `https://maps.google.com/?q=${encodeURIComponent(address)}`;
 }
@@ -43,6 +26,8 @@ export default function Locations({ intro, offices }: { intro: Intro; offices: O
     return (ai < 0 ? 99 : ai) - (bi < 0 ? 99 : bi);
   });
   const [active, setActive] = useState(ordered[0]?.city ?? null);
+  const office = ordered.find((item) => item.city === active) ?? ordered[0];
+  const n = String(PIN_ORDER.indexOf(PIN_BY_CITY[office?.city ?? ""] ?? "") + 1).padStart(2, "0");
 
   return (
     <Section id="locations">
@@ -53,60 +38,31 @@ export default function Locations({ intro, offices }: { intro: Intro; offices: O
         descriptionClass="copy mt-5 max-w-[52ch] text-muted"
       />
 
-      <div className="mt-10 flex flex-col items-stretch gap-6 lg:flex-row lg:gap-10">
-        <div className="relative mx-auto aspect-square h-[500px] w-[500px] max-w-full shrink-0 overflow-hidden rounded-[28px] bg-soft p-3 max-lg:h-auto max-lg:w-full">
+      <div className="mx-auto mt-10 grid max-w-[720px] gap-6">
+        <div className="overflow-hidden rounded-[28px] bg-soft p-4 md:p-6">
           <OfficesMap active={active} onActive={setActive} />
         </div>
 
-        <div className="grid flex-1 grid-cols-2 grid-rows-3 gap-3 lg:h-[500px]">
-          {ordered.map((office, index) => {
-            const on = active === office.city;
-            const n = String(PIN_ORDER.indexOf(PIN_BY_CITY[office.city] ?? "") + 1).padStart(2, "0");
-            const last = index === ordered.length - 1;
-            return (
-              <button
-                key={office.city}
-                type="button"
-                onClick={() => setActive(office.city)}
-                onMouseEnter={() => setActive(office.city)}
-                className={`group flex min-h-0 overflow-hidden rounded-[20px] border text-left transition ${
-                  on ? "border-amber shadow-[0_10px_28px_rgba(249,115,22,0.12)]" : "border-line hover:border-amber/40"
-                } ${last ? "col-span-2" : ""}`}
-              >
-                <span className={`relative ${last ? "w-[42%]" : "w-[38%]"} shrink-0`}>
-                  <Image
-                    src={PHOTO[office.city] ?? "/images/locations/tvm.jpg"}
-                    alt=""
-                    fill
-                    className="object-cover transition duration-500 group-hover:scale-[1.04]"
-                    sizes="180px"
-                  />
-                </span>
-                <span className="flex min-w-0 flex-1 flex-col justify-center bg-white px-3 py-3 md:px-4">
-                  <span className="text-[11px] font-medium tracking-[0.16em] text-amber uppercase">{n}</span>
-                  <span className="mt-1 text-[17px] leading-tight font-semibold text-ink md:text-[19px]">
-                    {office.city.split(",")[0].replace(/ \(.+\)/, "")}
-                  </span>
-                  <span className="mt-1 text-[13px] leading-snug text-muted md:text-[14px]">
-                    {LANDMARK[office.city] ?? "Sunlife office"}
-                  </span>
-                  <a
-                    href={mapsHref(office.address)}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-2 inline-flex items-center gap-1 text-[14px] font-medium text-ink underline decoration-ink/30 underline-offset-4 transition duration-200 group-hover:text-amber group-hover:decoration-amber hover:text-amber"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    Get directions
-                    <span aria-hidden className="inline-block transition-transform duration-200 group-hover:translate-x-0.5">
-                      →
-                    </span>
-                  </a>
-                </span>
-              </button>
-            );
-          })}
-        </div>
+        {office ? (
+          <div className="rounded-[24px] border border-line bg-white px-6 py-6 md:px-8 md:py-7">
+            <p className="text-[15px] font-semibold tracking-[0.16em] text-amber uppercase">{n}</p>
+            <h3 className="mt-2 text-[32px] leading-tight font-semibold text-ink md:text-[40px]">
+              {office.city.split(",")[0]}
+            </h3>
+            <p className="mt-3 max-w-[46ch] text-[18px] leading-relaxed text-ink/80 md:text-[20px]">
+              {office.address}
+            </p>
+            <a
+              href={mapsHref(office.address)}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-5 inline-flex items-center gap-1.5 text-[18px] font-semibold text-ink underline decoration-ink/30 underline-offset-4 transition duration-200 hover:text-amber hover:decoration-amber"
+            >
+              Get directions
+              <span aria-hidden>→</span>
+            </a>
+          </div>
+        ) : null}
       </div>
     </Section>
   );
@@ -171,7 +127,7 @@ function OfficesMap({
   return (
     <div
       ref={ref}
-      className="offices-map h-full w-full [&_svg]:h-full [&_svg]:w-full"
+      className="offices-map mx-auto w-full max-w-[640px] [&_svg]:h-auto [&_svg]:w-full"
       dangerouslySetInnerHTML={markup ? { __html: markup } : undefined}
       aria-label="Interactive map of Sunlife offices in Kerala and Tamil Nadu"
     />

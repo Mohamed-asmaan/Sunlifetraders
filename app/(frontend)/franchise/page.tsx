@@ -175,7 +175,11 @@ export default function FranchisePage() {
           title="Talk to us about a Sunlife franchise"
           body="Share your district and WhatsApp number. Our partner desk will call within 1 working day with territory, training and investment details."
           primaryHref="#apply"
-          primaryLabel="Apply now"
+          primaryLabel="Prefer the full form? Apply below"
+          fieldLabel="District"
+          fieldPlaceholder="e.g. Kollam"
+          message="Hi Sunlife, I'm interested in a franchise."
+          showBill={false}
         />
       </Section>
 
@@ -199,7 +203,7 @@ export default function FranchisePage() {
                 className="ui flex items-center gap-3 rounded-xl border border-line bg-soft p-4 text-ink transition hover:bg-white"
               >
                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-[#25D366] text-white">
-                  <WhatsAppIcon size={16} />
+                  <WhatsAppIcon size={16} className="text-white" />
                 </span>
                 <div>
                   <p className="text-sm font-medium">WhatsApp enquiry</p>

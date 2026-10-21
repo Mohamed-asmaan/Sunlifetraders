@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import { openRoi } from "@/components/roi/RoiOverlay";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
+import skyBg from "../public/images/hero/sky.png";
 
 const KEY = "sunlife-popup-seen";
 
@@ -49,16 +50,17 @@ export default function MarketingPopup() {
         aria-modal="true"
         className="relative grid w-full max-w-[720px] overflow-hidden rounded-[32px] bg-white shadow-[0_24px_80px_rgba(17,17,17,0.22)] md:grid-cols-[0.9fr_1.1fr]"
       >
-        <div className="relative hidden min-h-[280px] md:block">
-          <Image
-            src="/images/ui/popup-home.jpg"
-            alt="Sunlit home ready for rooftop solar"
-            fill
-            className="object-cover"
-            sizes="360px"
+        <div className="relative hidden min-h-[280px] overflow-hidden md:block">
+          <Image src={skyBg} alt="" fill className="object-cover object-top" sizes="360px" />
+          <img
+            src="/images/hero/home.svg"
+            alt="Kerala home with rooftop solar panels"
+            width={1060}
+            height={473}
+            className="absolute bottom-0 left-1/2 w-[160%] max-w-none -translate-x-1/2"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
-          <p className="absolute bottom-5 left-5 right-5 text-sm text-white/90">
+          <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-ink/75 to-transparent" />
+          <p className="absolute bottom-5 left-5 right-5 text-sm text-white">
             Cut your EB bill 70–90% with MNRE subsidy up to ₹78,000.
           </p>
         </div>
