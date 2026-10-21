@@ -160,7 +160,7 @@ export default function ContactView({ page }: { page: ContactContent }) {
           {page.cards.map((card, i) => (
             <MotionCard key={card.title} i={i} step={0.1} className="rounded-[24px] bg-soft p-6">
               <AccentDot />
-              <h2 className="display-kicker">{card.title}</h2>
+              <h2 className="display-card">{card.title}</h2>
               <p className="mt-2 text-sm leading-relaxed text-muted">{card.description}</p>
               <a href={card.href} className="mt-4 inline-block text-sm font-medium underline break-all">
                 {card.label}
@@ -175,14 +175,14 @@ export default function ContactView({ page }: { page: ContactContent }) {
         <div className="grid gap-4 md:grid-cols-2">
           <MotionCard i={0} className="rounded-[24px] border border-line bg-soft p-6">
             <AccentDot />
-            <h2 className="display-kicker">Kerala Office</h2>
+            <h2 className="display-card">Kerala Office</h2>
             <p className="copy mt-2 text-muted">Sunlife Traders LLP</p>
             <p className="copy text-muted">Pothencode, Thiruvananthapuram</p>
             <p className="copy text-muted">Kerala 695584</p>
           </MotionCard>
           <MotionCard i={1} className="rounded-[24px] border border-line bg-soft p-6">
             <AccentDot />
-            <h2 className="display-kicker">Tamil Nadu Office</h2>
+            <h2 className="display-card">Tamil Nadu Office</h2>
             <p className="copy mt-2 text-muted">Sunlife Traders LLP</p>
             <p className="copy text-muted">Karankodu, Kanyakumari District</p>
             <p className="copy text-muted">Tamil Nadu 629809</p>
@@ -193,7 +193,7 @@ export default function ContactView({ page }: { page: ContactContent }) {
         <Reveal className="mt-4">
           <div className="rounded-[24px] border border-line bg-soft p-6">
             <AccentDot />
-            <h2 className="display-kicker">Company Details</h2>
+            <h2 className="display-card">Company Details</h2>
             <div className="mt-4 grid gap-3 sm:grid-cols-2 md:grid-cols-3">
               <div>
                 <p className="eyebrow text-amber mb-1">GSTIN</p>

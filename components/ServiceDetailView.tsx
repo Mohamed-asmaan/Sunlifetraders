@@ -565,23 +565,25 @@ export default function ServiceDetailView({ page }: { page: CmsPage }) {
               <WhatsAppButton variant="onDark">WhatsApp us</WhatsAppButton>
             </div>
           </div>
-          <div className="rounded-[28px] border border-white/40 bg-white/95 p-5 shadow-[0_24px_60px_rgba(17,17,17,0.22)] backdrop-blur-md md:p-6">
-            <p className="eyebrow text-amber">PM Surya Ghar</p>
-            <h2 className="display-kicker mt-2">
-              Did you know that the PM-Surya Ghar Solar Project offers up to ₹78,000 in government subsidies?
-            </h2>
+          <div className="overflow-hidden rounded-[28px] border border-white/40 bg-white/95 py-6 pl-6 shadow-[0_24px_60px_rgba(17,17,17,0.22)] backdrop-blur-md md:py-7 md:pl-7">
+            <div className="pr-6 md:pr-7">
+              <p className="eyebrow text-amber">PM Surya Ghar</p>
+              <h2 className="display-card mt-3">Up to ₹78,000 in government subsidy</h2>
+            </div>
             <div className="relative my-4 aspect-[16/9] w-full">
               <Image
                 src="/images/services/subsidy.png"
                 alt="Government solar subsidy"
                 fill
-                className="object-contain"
-                sizes="(max-width: 1024px) 100vw, 520px"
+                className="object-contain object-right drop-shadow-[0_18px_24px_rgba(17,17,17,0.16)]"
+                sizes="(max-width: 1024px) 100vw, 400px"
               />
             </div>
-            <p className="copy text-ink/75">{data.subsidyBody}</p>
-            <div className="mt-5">
-              <ArrowButton href="/contact">Click here!</ArrowButton>
+            <div className="pr-6 md:pr-7">
+              <p className="copy text-ink/70">{data.subsidyBody}</p>
+              <ArrowButton href="/contact" className="mt-6">
+                Check my eligibility
+              </ArrowButton>
             </div>
           </div>
         </div>
@@ -591,7 +593,7 @@ export default function ServiceDetailView({ page }: { page: CmsPage }) {
         <div className="grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-12">
           <Reveal>
             <p className="eyebrow mb-3 text-amber">Why Choose Us</p>
-            <h2 className="display-kicker mb-3 max-w-[40ch]">{data.whyChooseTitle}</h2>
+            <h2 className="display mb-4 max-w-[22ch]">{data.whyChooseTitle}</h2>
             <p className="copy mb-6 max-w-[64ch] text-muted">{data.whyChooseSubtitle}</p>
             <h3 className="ui text-ink">{data.whyChooseHeading}</h3>
             <PointList items={data.whyChoosePoints} />
@@ -610,8 +612,8 @@ export default function ServiceDetailView({ page }: { page: CmsPage }) {
 
       <Section pad="tight">
         <Reveal className="mb-8">
-          <h2 className="display-kicker">{data.solutionsTitle}</h2>
-          <p className="copy mt-2 max-w-[72ch] text-muted">{data.solutionsDescription}</p>
+          <h2 className="display max-w-[24ch]">{data.solutionsTitle}</h2>
+          <p className="copy mt-4 max-w-[72ch] text-muted">{data.solutionsDescription}</p>
         </Reveal>
 
         {data.cards ? (
@@ -654,21 +656,46 @@ export default function ServiceDetailView({ page }: { page: CmsPage }) {
         ) : null}
       </Section>
 
-      {data.guides.map((guide) => (
-        <Section pad="tight" key={guide.id} id={guide.id}>
-          <Reveal>
-            <div className="rounded-[24px] border border-line bg-soft p-6 md:p-8">
-              <AccentDot />
-              <h2 className="display-kicker">{guide.title}</h2>
-              <p className="copy mt-3 max-w-[72ch] text-muted">{guide.content}</p>
-              <h3 className="ui mt-6 text-ink">{guide.worksBestTitle}</h3>
-              <PointList items={guide.worksBestFor} />
-              <h3 className="ui mt-6 text-ink">{guide.benefitsTitle}</h3>
-              <PointList items={guide.benefits} />
-            </div>
-          </Reveal>
+      {data.guides.length ? (
+        <Section pad="tight">
+          <div className="flex flex-col gap-4 lg:gap-6">
+            {data.guides.map((guide, i) => (
+              <article
+                key={guide.id}
+                id={guide.id}
+                className="scroll-mt-28 overflow-hidden rounded-[28px] border border-line bg-soft shadow-[0_12px_40px_rgba(17,17,17,0.06)] lg:sticky"
+                style={{ top: `calc(96px + ${i * 16}px)`, zIndex: i + 1 }}
+              >
+                <div
+                  className="h-1 bg-amber"
+                  style={{ width: `${((i + 1) / data.guides.length) * 100}%` }}
+                  aria-hidden
+                />
+                <div className="p-6 md:p-10">
+                  <div className="flex items-start justify-between gap-4">
+                    <AccentDot className="" />
+                    <p className="eyebrow text-ink/45">
+                      Guide {String(i + 1).padStart(2, "0")} / {String(data.guides.length).padStart(2, "0")}
+                    </p>
+                  </div>
+                  <h2 className="display-card mt-5">{guide.title}</h2>
+                  <p className="copy mt-3 max-w-[72ch] text-ink/70">{guide.content}</p>
+                  <div className="mt-8 grid gap-6 lg:grid-cols-2 lg:gap-10">
+                    <div>
+                      <h3 className="display-kicker text-ink">{guide.worksBestTitle}</h3>
+                      <PointList items={guide.worksBestFor} />
+                    </div>
+                    <div>
+                      <h3 className="display-kicker text-ink">{guide.benefitsTitle}</h3>
+                      <PointList items={guide.benefits} />
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </Section>
-      ))}
+      ) : null}
 
       <Section pad="tight">
         <Reveal>
@@ -703,7 +730,7 @@ export default function ServiceDetailView({ page }: { page: CmsPage }) {
         <Reveal>
           <div className="rounded-[24px] bg-soft p-6 md:p-8">
             <AccentDot />
-            <h2 className="display-kicker">Your Trusted Solar Partner in Kerala and Tamil Nadu</h2>
+            <h2 className="display-card">Your Trusted Solar Partner in Kerala and Tamil Nadu</h2>
             <p className="copy mt-3 max-w-[64ch] text-muted">
               At Sunlife Traders, we&apos;re excited to offer our solar solutions in Kerala and Tamil Nadu. We want to
               help you use the sun&apos;s energy easily and confidently.
@@ -732,7 +759,7 @@ export default function ServiceDetailView({ page }: { page: CmsPage }) {
         <Reveal className="mb-6 flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="eyebrow text-amber">Certified installations</p>
-            <h2 className="display-kicker mt-2 max-w-[40ch]">
+            <h2 className="display-card mt-2 max-w-[40ch]">
               We&apos;re certified by trusted organizations, so you can be sure our installations are safe and of high
               quality.
             </h2>

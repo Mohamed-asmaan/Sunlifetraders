@@ -107,7 +107,7 @@ export default async function ProductDetailPage({
                 href={site.company.whatsappHref}
                 target="_blank"
                 rel="noreferrer"
-                className="ui inline-flex items-center gap-2 rounded-xl border border-line bg-soft px-4 py-[9px] text-ink transition hover:bg-white"
+                className="ui inline-flex h-12 items-center gap-2 rounded-xl border border-line bg-soft px-4 text-ink transition hover:bg-white"
               >
                 <WhatsAppIcon size={16} />
                 WhatsApp enquiry
@@ -148,7 +148,7 @@ export default async function ProductDetailPage({
         <Reveal>
           <div className="rounded-[24px] bg-ink p-6 text-white md:p-8">
             <p className="eyebrow text-white/50">Why buy from Sunlife Traders</p>
-            <h2 className="display-kicker mt-2 text-white">Expert supply, expert install — one team.</h2>
+            <h2 className="display-card mt-2 text-white">Expert supply, expert install — one team.</h2>
             <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 { title: "MNRE & EVVO certified", desc: "Every product meets government and safety standards." },
@@ -173,7 +173,7 @@ export default async function ProductDetailPage({
         {/* Related products */}
         {related.length > 0 ? (
           <div className="mt-14">
-            <h2 className="display-kicker mb-6 text-ink">
+            <h2 className="display-card mb-6 text-ink">
               More in{" "}
               <span className="text-ink/50">{categoryLabel[product.category]}</span>
             </h2>
@@ -225,7 +225,7 @@ export default async function ProductDetailPage({
           <ArrowButton href="/contact">Get a free quote</ArrowButton>
           <Link
             href="/products"
-            className="ui inline-flex items-center gap-2 rounded-xl border border-line bg-soft px-4 py-[9px] text-ink transition hover:bg-white"
+            className="ui inline-flex h-12 items-center gap-2 rounded-xl border border-line bg-soft px-4 text-ink transition hover:bg-white"
           >
             ← All products
           </Link>

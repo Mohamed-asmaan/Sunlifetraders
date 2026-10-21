@@ -47,7 +47,7 @@ export default function SurveyCta({
       <div className="grid overflow-hidden rounded-[32px] border border-amber/20 bg-amber-light md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
         <div className="p-6 md:p-10">
           <p className="eyebrow text-amber">Free · Takes 30 seconds</p>
-          <h2 className="display-kicker mt-3 max-w-[22ch] text-ink">{title}</h2>
+          <h2 className="display-card mt-3 max-w-[22ch] text-ink">{title}</h2>
           <p className="copy mt-3 max-w-[48ch] text-ink/75">{body}</p>
           <ul className="mt-6 flex flex-col gap-2.5">
             {POINTS.map((point) => (

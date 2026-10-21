@@ -124,7 +124,7 @@ export default function AboutView({ page }: { page: CmsPage }) {
           <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
             <div>
               <AccentDot />
-              <h2 className="display-kicker">Our Products &amp; Quality Assurance</h2>
+              <h2 className="display-card">Our Products &amp; Quality Assurance</h2>
               <p className="copy mt-3 max-w-[72ch] text-muted">
                 At Sunlife Traders, we take great pride in the products we use, ensuring that our clients receive the
                 highest level of quality and reliability in every service we provide. We understand that in our field,
@@ -169,7 +169,7 @@ export default function AboutView({ page }: { page: CmsPage }) {
         <Reveal className="mb-8 flex flex-col items-start gap-5 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="eyebrow text-amber">Certified installations</p>
-            <h2 className="display-kicker mt-2 max-w-[40ch]">
+            <h2 className="display-card mt-2 max-w-[40ch]">
               We&apos;re certified by trusted organizations, so you can be sure our installations are safe and of high
               quality.
             </h2>
@@ -193,7 +193,7 @@ export default function AboutView({ page }: { page: CmsPage }) {
         <div className="grid gap-4 md:grid-cols-2">
           <MotionCard i={0} className="rounded-[24px] bg-soft p-6 md:p-8">
             <AccentDot />
-            <h2 className="display-kicker">Our History</h2>
+            <h2 className="display-card">Our History</h2>
             <p className="copy mt-3 text-muted">
               Sunlife Energies was founded in 2018 in Nedumangad, Kerala, with a vision to make renewable energy
               accessible and affordable. In 2022, we evolved into Sunlife Traders LLP and shifted our operations to
@@ -203,7 +203,7 @@ export default function AboutView({ page }: { page: CmsPage }) {
           </MotionCard>
           <MotionCard i={1} className="rounded-[24px] bg-soft p-6 md:p-8">
             <AccentDot />
-            <h2 className="display-kicker">Our Mission &amp; Vision</h2>
+            <h2 className="display-card">Our Mission &amp; Vision</h2>
             <p className="copy mt-3 text-muted">
               At Sunlife Traders LLP, our mission is to harness the power of the sun to create sustainable and
               cost-effective energy solutions for our customers, promoting green energy and reducing the carbon
@@ -216,7 +216,7 @@ export default function AboutView({ page }: { page: CmsPage }) {
       <Section pad="tight">
         <Reveal>
           <p className="eyebrow mb-4 text-amber">Gallery</p>
-          <h2 className="display-kicker mb-6">Our Work in Photos</h2>
+          <h2 className="display-card mb-6">Our Work in Photos</h2>
         </Reveal>
         <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
           {GALLERY.map((src, i) => (
@@ -238,7 +238,7 @@ export default function AboutView({ page }: { page: CmsPage }) {
       <Section pad="tight">
         <Reveal>
           <p className="eyebrow mb-4 text-amber">Installations</p>
-          <h2 className="display-kicker mb-6">Real Solar Installations Across Kerala &amp; Tamil Nadu</h2>
+          <h2 className="display-card mb-6">Real Solar Installations Across Kerala &amp; Tamil Nadu</h2>
         </Reveal>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
           {INSTALLS.map((src, i) => (

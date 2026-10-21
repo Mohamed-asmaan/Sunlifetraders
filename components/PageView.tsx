@@ -20,7 +20,7 @@ export default function PageView({ page }: { page: CmsPage }) {
         {page.sections.map((section, i) => (
           <MotionCard key={section.title} i={i} className="rounded-[24px] bg-soft p-6">
             <AccentDot />
-            <h2 className="display-kicker">{section.title}</h2>
+            <h2 className="display-card">{section.title}</h2>
             {section.description ? (
               <p className="mt-2 text-sm leading-relaxed text-muted">{section.description}</p>
             ) : null}

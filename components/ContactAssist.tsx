@@ -1,17 +1,15 @@
 import Link from "next/link";
 import ArrowButton from "@/components/ArrowButton";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import WhatsAppIcon from "@/components/WhatsAppIcon";
+import { Reveal } from "@/components/motion/Reveal";
 import { site } from "@/lib/data";
 
 const CHANNELS = [
-  { href: site.company.whatsappHref, label: "Via WhatsApp", kind: "whatsapp" as const },
   { href: `mailto:${site.company.email}`, label: "Via mail", kind: "mail" as const },
   { href: site.company.phoneHref, label: "Via call", kind: "call" as const },
 ];
 
-function ChannelIcon({ kind }: { kind: "whatsapp" | "mail" | "call" }) {
-  if (kind === "whatsapp") return <WhatsAppIcon size={16} />;
+function ChannelIcon({ kind }: { kind: "mail" | "call" }) {
   if (kind === "mail") {
     return (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -33,26 +31,30 @@ function ChannelIcon({ kind }: { kind: "whatsapp" | "mail" | "call" }) {
 
 export default function ContactAssist() {
   return (
-    <div className="rounded-[24px] border border-amber/20 bg-amber-light p-6 md:p-8">
-      <p className="eyebrow text-amber">Need immediate assistance?</p>
-      <h2 className="display-kicker mt-2">We&apos;re here to help you.</h2>
-      <p className="copy mt-2 max-w-[56ch] text-ink/80">
-        Reach out immediately by visiting our page, or contact us via WhatsApp, mail, or call.
-      </p>
-      <div className="mt-5 flex flex-wrap items-center gap-3">
-        <ArrowButton href="/contact">Contact Us!</ArrowButton>
-        <WhatsAppButton variant="solid">Via WhatsApp</WhatsAppButton>
-        {CHANNELS.filter((channel) => channel.kind !== "whatsapp").map((channel) => (
-          <Link
-            key={channel.label}
-            href={channel.href}
-            className="ui inline-flex items-center gap-2 rounded-xl border border-line bg-white px-4 py-[9px] text-ink transition hover:border-amber/40"
-          >
-            <ChannelIcon kind={channel.kind} />
-            {channel.label}
-          </Link>
-        ))}
+    <Reveal>
+      <div className="flex flex-col gap-6 rounded-[28px] border border-amber/20 bg-amber-light p-6 md:p-10 lg:flex-row lg:items-end lg:justify-between">
+        <div className="max-w-[52ch]">
+          <p className="eyebrow text-amber">Need immediate assistance?</p>
+          <h2 className="display-card mt-3 text-ink">We&apos;re here to help you.</h2>
+          <p className="copy mt-3 text-ink/70">
+            Reach out immediately by visiting our page, or contact us via WhatsApp, mail, or call.
+          </p>
+        </div>
+        <div className="flex flex-wrap items-center gap-3">
+          <ArrowButton href="/contact">Contact Us!</ArrowButton>
+          <WhatsAppButton variant="solid">Via WhatsApp</WhatsAppButton>
+          {CHANNELS.map((channel) => (
+            <Link
+              key={channel.label}
+              href={channel.href}
+              className="ui inline-flex h-12 items-center gap-2 rounded-xl border border-line bg-white px-4 text-ink transition hover:border-amber/40"
+            >
+              <ChannelIcon kind={channel.kind} />
+              {channel.label}
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
+    </Reveal>
   );
 }

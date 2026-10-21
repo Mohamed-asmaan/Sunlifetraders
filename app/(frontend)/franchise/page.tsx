@@ -118,7 +118,7 @@ export default function FranchisePage() {
           {BENEFITS.map((b, i) => (
             <MotionCard key={b.title} i={i} className="rounded-[24px] bg-soft p-6">
               <AccentDot />
-              <h2 className="display-kicker">{b.title}</h2>
+              <h2 className="display-card">{b.title}</h2>
               <p className="copy mt-2 text-muted">{b.description}</p>
             </MotionCard>
           ))}
@@ -229,7 +229,7 @@ export default function FranchisePage() {
 
           {/* Right: form */}
           <Reveal delay={0.2} className="rounded-[24px] border border-line bg-soft p-6 md:p-8">
-            <h2 className="display-kicker mb-6 text-ink">Franchise application</h2>
+            <h2 className="display-card mb-6 text-ink">Franchise application</h2>
             <FranchiseForm />
           </Reveal>
         </div>

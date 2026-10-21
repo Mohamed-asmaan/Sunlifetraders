@@ -95,7 +95,7 @@ export default function MarketingPopup() {
                 className="h-12 flex-1 bg-transparent px-3 outline-none"
               />
             </div>
-            <button type="submit" className="ui h-12 rounded-full bg-ink text-white">
+            <button type="submit" className="ui h-12 rounded-xl bg-ink text-white">
               Show my savings
             </button>
             <button type="button" onClick={dismiss} className="ui text-ink/45">
